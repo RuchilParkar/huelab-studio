@@ -86,19 +86,19 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Export Palette"
-      description={`Export "${currentPalette.name}" in production-ready formats.`}
+      title="Export tokens"
+      description={`Production design tokens for "${currentPalette.name}"`}
       maxWidth="max-w-2xl"
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4">
         {/* Format Selector Tabs */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#171A22] border border-[#272B36] rounded-xl overflow-x-auto">
+        <div className="flex items-center gap-1 p-0.5 bg-[#141720] border border-[#222632] rounded-lg overflow-x-auto">
           {[
             { id: 'css', label: 'CSS Variables', icon: FileCode },
             { id: 'json', label: 'JSON Tokens', icon: FileJson },
             { id: 'tailwind', label: 'Tailwind CSS', icon: FileCode },
-            { id: 'scss', label: 'SCSS', icon: FileCode },
-            { id: 'png', label: 'PNG Image Card', icon: ImageIcon },
+            { id: 'scss', label: 'SCSS Variables', icon: FileCode },
+            { id: 'png', label: 'PNG Spec Card', icon: ImageIcon },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -106,10 +106,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as ExportTab)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-xs font-medium transition-all shrink-0 ${
+                className={`flex items-center gap-1.5 h-7 px-2.5 rounded-md text-xs font-medium transition-colors shrink-0 ${
                   isActive
-                    ? 'bg-[#7C5CFC] text-white shadow-md'
-                    : 'text-[#9298A6] hover:text-[#F4F5F7] hover:bg-[#272B36]/50'
+                    ? 'bg-[#1F2432] text-[#F1F3F7] border border-[#2D3445] shadow-sm'
+                    : 'text-[#8E95A5] hover:text-[#F1F3F7]'
                 }`}
               >
                 <Icon className="w-3.5 h-3.5" />
@@ -121,41 +121,41 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
 
         {/* Content View */}
         {activeTab === 'png' ? (
-          <div className="flex flex-col items-center justify-center p-8 bg-[#0B0C10] border border-[#272B36] rounded-xl text-center">
-            <div className="flex items-center gap-1.5 mb-6 h-16 w-full max-w-md rounded-lg overflow-hidden border border-[#272B36]">
+          <div className="flex flex-col items-center justify-center p-6 bg-[#08090C] border border-[#222632] rounded-lg text-center">
+            <div className="flex items-center gap-1 mb-5 h-14 w-full max-w-sm rounded overflow-hidden border border-[#222632]">
               {currentPalette.colors.map((c) => (
                 <div key={c.id} style={{ backgroundColor: c.hex }} className="flex-1 h-full" />
               ))}
             </div>
-            <h4 className="text-sm font-semibold text-[#F4F5F7] mb-1">High-Resolution Social Card</h4>
-            <p className="text-xs text-[#9298A6] max-w-sm mb-6">
-              Renders a 1200x630 branded showcase card with color values, typography, and harmony metadata.
+            <h4 className="text-xs font-semibold text-[#F1F3F7] mb-1">High-resolution spec sheet</h4>
+            <p className="text-[11px] text-[#8E95A5] max-w-xs mb-5">
+              Exports a 1200x630 calibrated specimen card with color swatches, hex coordinates, and contrast ratios.
             </p>
             <button
               onClick={handleDownload}
               disabled={isExportingPng}
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#7C5CFC] hover:bg-[#6D28D9] disabled:opacity-50 text-white text-sm font-medium rounded-xl shadow-lg transition-all"
+              className="flex items-center gap-1.5 h-8 px-3.5 bg-[#F1F3F7] hover:bg-white disabled:opacity-40 text-[#0B0C10] text-xs font-semibold rounded-lg btn-highlight shadow-sm transition-colors"
             >
-              <Download className="w-4 h-4" />
-              <span>{isExportingPng ? 'Generating Card...' : 'Download High-Res PNG'}</span>
+              <Download className="w-3.5 h-3.5" />
+              <span>{isExportingPng ? 'Generating card...' : 'Download PNG spec'}</span>
             </button>
           </div>
         ) : (
           <div className="relative">
-            <pre className="p-4 bg-[#0B0C10] border border-[#272B36] rounded-xl text-xs font-mono text-[#F4F5F7] overflow-x-auto max-h-72 leading-relaxed selection:bg-[#7C5CFC]/40">
+            <pre className="p-3.5 bg-[#08090C] border border-[#222632] rounded-lg text-xs font-mono text-[#F1F3F7] overflow-x-auto max-h-72 leading-relaxed">
               <code>{getExportContent()}</code>
             </pre>
-            <div className="absolute top-3 right-3 flex items-center gap-2">
+            <div className="absolute top-2.5 right-2.5 flex items-center gap-1.5">
               <button
                 onClick={handleCopy}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] text-[#F4F5F7] text-xs font-medium rounded-lg transition-all"
+                className="flex items-center gap-1.5 h-7 px-2.5 bg-[#141720] hover:bg-[#1E2330] border border-[#222632] text-[#F1F3F7] text-xs font-medium rounded-md transition-colors"
               >
                 {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
               <button
                 onClick={handleDownload}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#7C5CFC] hover:bg-[#6D28D9] text-white text-xs font-medium rounded-lg transition-all"
+                className="flex items-center gap-1.5 h-7 px-2.5 bg-[#F1F3F7] hover:bg-white text-[#0B0C10] text-xs font-semibold rounded-md btn-highlight shadow-sm transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>Download</span>

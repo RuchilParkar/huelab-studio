@@ -63,43 +63,43 @@ export const WebsitePreview: React.FC = () => {
   ];
 
   return (
-    <div className="w-full bg-[#111319] border border-[#272B36] rounded-2xl overflow-hidden shadow-xl flex flex-col">
+    <div className="w-full bg-[#0E1015] border border-[#222632] rounded-xl overflow-hidden shadow-sm flex flex-col">
       {/* Top Preview Controls Bar */}
-      <div className="p-3.5 sm:p-4 border-b border-[#272B36] flex flex-wrap items-center justify-between gap-3 bg-[#171A22]/50">
+      <div className="p-3 sm:px-4 sm:py-3 border-b border-[#222632] flex flex-wrap items-center justify-between gap-2.5 bg-[#141720]/70">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-[#A78BFA]" />
-          <h3 className="text-xs font-semibold text-[#F4F5F7]">Live UI Simulation</h3>
-          <span className="text-[10px] text-[#626A78] hidden sm:inline">
-            • Reactive design tokens mapped across real components
+          <Component className="w-4 h-4 text-[#8E95A5]" />
+          <h3 className="text-xs font-semibold text-[#F1F3F7]">Interface simulation</h3>
+          <span className="text-[11px] text-[#64748B] hidden sm:inline">
+            • Live token mappings across production archetypes
           </span>
         </div>
 
         {/* Mode Selector & Theme Toggle */}
         <div className="flex items-center gap-2">
           {/* Theme Switcher: Dark vs Light UI Context */}
-          <div className="flex items-center p-0.5 bg-[#0B0C10] border border-[#272B36] rounded-xl">
+          <div className="flex items-center p-0.5 bg-[#0B0C10] border border-[#222632] rounded-lg">
             <button
               onClick={() => setPreviewTheme('dark')}
-              className={`p-1.5 rounded-lg text-xs transition-colors ${
-                previewTheme === 'dark' ? 'bg-[#171A22] text-[#A78BFA] shadow-sm' : 'text-[#626A78] hover:text-[#9298A6]'
+              className={`p-1.5 rounded-md text-xs transition-colors ${
+                previewTheme === 'dark' ? 'bg-[#181B24] text-[#F1F3F7] shadow-sm' : 'text-[#64748B] hover:text-[#9CA3AF]'
               }`}
-              title="Simulate Dark UI Theme"
+              title="Simulate dark background"
             >
               <Moon className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => setPreviewTheme('light')}
-              className={`p-1.5 rounded-lg text-xs transition-colors ${
-                previewTheme === 'light' ? 'bg-[#171A22] text-[#A78BFA] shadow-sm' : 'text-[#626A78] hover:text-[#9298A6]'
+              className={`p-1.5 rounded-md text-xs transition-colors ${
+                previewTheme === 'light' ? 'bg-[#181B24] text-[#F1F3F7] shadow-sm' : 'text-[#64748B] hover:text-[#9CA3AF]'
               }`}
-              title="Simulate Light UI Theme"
+              title="Simulate light background"
             >
               <Sun className="w-3.5 h-3.5" />
             </button>
           </div>
 
           {/* Archetype Modes */}
-          <div className="flex items-center gap-1 p-1 bg-[#0B0C10] border border-[#272B36] rounded-xl overflow-x-auto">
+          <div className="flex items-center gap-0.5 p-0.5 bg-[#0B0C10] border border-[#222632] rounded-lg overflow-x-auto">
             {modes.map((m) => {
               const Icon = m.icon;
               const isActive = previewMode === m.id;
@@ -107,10 +107,10 @@ export const WebsitePreview: React.FC = () => {
                 <button
                   key={m.id}
                   onClick={() => setPreviewMode(m.id)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all ${
+                  className={`flex items-center gap-1.5 h-7 px-2.5 rounded-md text-xs font-medium whitespace-nowrap transition-colors ${
                     isActive
-                      ? 'bg-[#7C5CFC] text-white shadow-sm'
-                      : 'text-[#9298A6] hover:text-[#F4F5F7]'
+                      ? 'bg-[#181B24] text-[#F1F3F7] border border-[#2B303F] shadow-sm'
+                      : 'text-[#8E95A5] hover:text-[#F1F3F7]'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -123,75 +123,74 @@ export const WebsitePreview: React.FC = () => {
       </div>
 
       {/* Dynamic Simulated Preview Container */}
-      <div className="p-4 sm:p-8 bg-[#0B0C10]/80 flex justify-center items-center min-h-[460px] overflow-x-auto">
-        {/* 1. SAAS MODE */}
+      <div className="p-4 sm:p-6 bg-[#08090C] flex justify-center items-center min-h-[440px] overflow-x-auto">
+        {/* 1. SAAS PLATFORM MODE */}
         {previewMode === 'saas' && (
           <div
             style={{ backgroundColor: bg }}
-            className="w-full max-w-4xl rounded-2xl border p-6 sm:p-8 shadow-2xl transition-all duration-300"
+            className="w-full max-w-4xl rounded-xl border p-5 sm:p-7 shadow-lg transition-colors duration-200"
           >
             {/* SaaS Navbar */}
             <div
-              style={{ backgroundColor: `${surface}ee`, borderColor: borderCol }}
-              className="px-5 py-3 rounded-xl border flex items-center justify-between backdrop-blur-md mb-8 shadow-sm"
+              style={{ backgroundColor: `${surface}`, borderColor: borderCol }}
+              className="px-4 py-2.5 rounded-lg border flex items-center justify-between mb-6 shadow-sm"
             >
               <div className="flex items-center gap-2.5">
-                <div style={{ backgroundColor: primary }} className="w-6 h-6 rounded-lg shadow-md" />
-                <span style={{ color: textPrimary }} className="font-bold text-sm tracking-tight">
-                  Apex Cloud
+                <div style={{ backgroundColor: primary }} className="w-5 h-5 rounded-md" />
+                <span style={{ color: textPrimary }} className="font-semibold text-xs tracking-tight">
+                  Orbit Telemetry
                 </span>
               </div>
-              <div style={{ color: textMuted }} className="hidden sm:flex items-center gap-5 text-xs">
-                <span className="hover:opacity-100 cursor-pointer">Product</span>
-                <span className="hover:opacity-100 cursor-pointer">Solutions</span>
-                <span className="hover:opacity-100 cursor-pointer">Pricing</span>
+              <div style={{ color: textMuted }} className="hidden sm:flex items-center gap-4 text-xs font-medium">
+                <span className="hover:opacity-100 cursor-pointer">Telemetry</span>
+                <span className="hover:opacity-100 cursor-pointer">Pipelines</span>
+                <span className="hover:opacity-100 cursor-pointer">Clusters</span>
               </div>
               <button
                 style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
-                className="px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-md transition-transform hover:scale-105"
+                className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors"
               >
-                Get Started
+                Deploy cluster
               </button>
             </div>
 
             {/* SaaS Hero Section */}
-            <div className="text-center max-w-xl mx-auto py-6">
+            <div className="text-center max-w-lg mx-auto py-4">
               <span
-                style={{ backgroundColor: `${accent}20`, color: accent, borderColor: `${accent}40` }}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border mb-4"
+                style={{ backgroundColor: `${accent}18`, color: accent, borderColor: `${accent}30` }}
+                className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-[11px] font-mono border mb-3"
               >
-                <Sparkles className="w-3 h-3" />
-                <span>Next-Gen Cloud Intelligence</span>
+                <span>Cluster v2.4 • Active</span>
               </span>
-              <h2 style={{ color: textPrimary }} className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">
-                Orchestrate your workflow with absolute confidence.
+              <h2 style={{ color: textPrimary }} className="text-xl sm:text-2xl font-semibold tracking-tight mb-2">
+                Distributed telemetry across edge clusters
               </h2>
-              <p style={{ color: textMuted }} className="text-xs sm:text-sm mb-6 leading-relaxed">
-                Empower your engineering teams with unified deployment insights, real-time telemetry, and resilient microservices.
+              <p style={{ color: textMuted }} className="text-xs sm:text-sm mb-5 leading-relaxed max-w-md mx-auto">
+                Continuous trace aggregation, latency histograms, and automated anomaly detection across active regions.
               </p>
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-2.5">
                 <button
                   style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
-                  className="px-5 py-2.5 rounded-xl text-xs font-semibold shadow-lg transition-transform hover:scale-105 flex items-center gap-2"
+                  className="px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition-colors flex items-center gap-1.5"
                 >
-                  <span>Start Free Trial</span>
+                  <span>Connect provider</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <button
                   style={{ backgroundColor: surface, borderColor: borderCol, color: textPrimary }}
-                  className="px-5 py-2.5 rounded-xl text-xs font-semibold border transition-all hover:opacity-90"
+                  className="px-4 py-2 rounded-lg text-xs font-medium border transition-colors hover:opacity-90"
                 >
-                  Book Demo
+                  Documentation
                 </button>
               </div>
             </div>
 
-            {/* Feature Cards Grid */}
-            <div style={{ borderColor: borderCol }} className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t">
+            {/* Feature Metrics Grid */}
+            <div style={{ borderColor: borderCol }} className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6 pt-5 border-t">
               {[
-                { title: 'Zero Latency', icon: TrendingUp, text: 'Edge routing with sub-5ms packet turnaround.' },
-                { title: 'Verified Security', icon: ShieldCheck, text: 'End-to-end encryption with SOC2 compliance.' },
-                { title: 'Team Sync', icon: Users, text: 'Real-time collaborative canvas for developer squads.' },
+                { title: 'Ingestion rate', icon: TrendingUp, text: 'Sub-4ms p99 packet propagation turnaround.' },
+                { title: 'Access control', icon: ShieldCheck, text: 'Mutual TLS verification with role-based policies.' },
+                { title: 'Cluster sync', icon: Users, text: 'Synchronized raft consensus across 8 availability zones.' },
               ].map((card, i) => {
                 const Icon = card.icon;
                 const col = i === 0 ? primary : i === 1 ? secondary : accent;
@@ -199,15 +198,15 @@ export const WebsitePreview: React.FC = () => {
                   <div
                     key={card.title}
                     style={{ backgroundColor: surface, borderColor: borderCol }}
-                    className="p-4 rounded-xl border transition-all hover:scale-[1.02] shadow-sm"
+                    className="p-3.5 rounded-lg border transition-colors shadow-sm"
                   >
                     <div
-                      style={{ backgroundColor: `${col}20` }}
-                      className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
+                      style={{ backgroundColor: `${col}18` }}
+                      className="w-7 h-7 rounded-md flex items-center justify-center mb-2.5"
                     >
-                      <Icon style={{ color: col }} className="w-4 h-4" />
+                      <Icon style={{ color: col }} className="w-3.5 h-3.5" />
                     </div>
-                    <h4 style={{ color: textPrimary }} className="text-xs font-semibold mb-1">{card.title}</h4>
+                    <h4 style={{ color: textPrimary }} className="text-xs font-semibold mb-0.5">{card.title}</h4>
                     <p style={{ color: textMuted }} className="text-[11px] leading-relaxed">{card.text}</p>
                   </div>
                 );
@@ -216,51 +215,51 @@ export const WebsitePreview: React.FC = () => {
           </div>
         )}
 
-        {/* 2. DASHBOARD MODE */}
+        {/* 2. ANALYTICS DASHBOARD MODE */}
         {previewMode === 'dashboard' && (
           <div
             style={{ backgroundColor: bg }}
-            className="w-full max-w-4xl rounded-2xl border p-6 shadow-2xl flex flex-col gap-5 transition-all duration-300"
+            className="w-full max-w-4xl rounded-xl border p-5 shadow-lg flex flex-col gap-4 transition-colors duration-200"
           >
             {/* Header */}
-            <div style={{ borderColor: borderCol }} className="flex items-center justify-between pb-4 border-b">
+            <div style={{ borderColor: borderCol }} className="flex items-center justify-between pb-3.5 border-b">
               <div>
-                <h3 style={{ color: textPrimary }} className="text-base font-bold">System Analytics Overview</h3>
-                <p style={{ color: textMuted }} className="text-xs">Real-time throughput metrics</p>
+                <h3 style={{ color: textPrimary }} className="text-sm font-semibold">Cluster telemetry overview</h3>
+                <p style={{ color: textMuted }} className="text-xs font-normal">Real-time throughput metrics</p>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   style={{ backgroundColor: surface, borderColor: borderCol, color: textPrimary }}
-                  className="px-3 py-1.5 rounded-lg border text-xs font-medium"
+                  className="px-2.5 py-1.5 rounded-lg border text-xs font-medium"
                 >
-                  Last 24 Hours
+                  Last 24 hours
                 </button>
                 <button
                   style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-md"
+                  className="px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm"
                 >
-                  Generate Report
+                  Export report
                 </button>
               </div>
             </div>
 
             {/* KPI Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-2.5">
               {[
-                { label: 'Active Sessions', val: '48,290', change: '+14.2%', col: primary },
-                { label: 'Avg Latency', val: '18.4 ms', change: '-4.1%', col: secondary },
-                { label: 'Conversion Rate', val: '6.42%', change: '+0.8%', col: accent },
-                { label: 'Revenue Yield', val: '$128,490', change: '+22.5%', col: primary },
+                { label: 'Active instances', val: '48,290', change: '+14.2% vs yesterday', col: primary },
+                { label: 'p99 Latency', val: '18.4 ms', change: '-4.1% vs avg', col: secondary },
+                { label: 'Cache hit ratio', val: '99.4%', change: '+0.2% vs baseline', col: accent },
+                { label: 'Throughput', val: '1.24 GB/s', change: '+8.5% peak', col: primary },
               ].map((kpi) => (
                 <div
                   key={kpi.label}
                   style={{ backgroundColor: surface, borderColor: borderCol }}
-                  className="p-4 rounded-xl border flex flex-col justify-between shadow-sm"
+                  className="p-3.5 rounded-lg border flex flex-col justify-between shadow-sm"
                 >
                   <span style={{ color: textMuted }} className="text-[11px] font-medium">{kpi.label}</span>
                   <div className="mt-2 flex items-baseline justify-between">
-                    <span style={{ color: textPrimary }} className="text-lg font-bold font-mono">{kpi.val}</span>
-                    <span style={{ color: kpi.col }} className="text-xs font-semibold">
+                    <span style={{ color: textPrimary }} className="text-base font-bold font-mono tabular-nums">{kpi.val}</span>
+                    <span style={{ color: kpi.col }} className="text-[11px] font-mono font-medium">
                       {kpi.change}
                     </span>
                   </div>
@@ -269,12 +268,12 @@ export const WebsitePreview: React.FC = () => {
             </div>
 
             {/* Utilization Bar */}
-            <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-4 rounded-xl border shadow-sm">
+            <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-3.5 rounded-lg border shadow-sm">
               <div className="flex justify-between text-xs mb-2 font-medium">
-                <span style={{ color: textPrimary }}>Cluster Utilization</span>
-                <span style={{ color: textMuted }} className="font-mono">78%</span>
+                <span style={{ color: textPrimary }}>Cluster allocation</span>
+                <span style={{ color: textMuted }} className="font-mono tabular-nums">78%</span>
               </div>
-              <div className="w-full h-3 bg-black/20 rounded-full overflow-hidden flex">
+              <div className="w-full h-2.5 bg-black/20 rounded-full overflow-hidden flex">
                 <div style={{ backgroundColor: primary, width: '45%' }} className="h-full" />
                 <div style={{ backgroundColor: secondary, width: '20%' }} className="h-full" />
                 <div style={{ backgroundColor: accent, width: '13%' }} className="h-full" />
@@ -283,67 +282,68 @@ export const WebsitePreview: React.FC = () => {
           </div>
         )}
 
-        {/* 3. E-COMMERCE STOREFRONT MODE */}
+        {/* 3. STOREFRONT MODE */}
         {previewMode === 'ecommerce' && (
           <div
             style={{ backgroundColor: bg }}
-            className="w-full max-w-4xl rounded-2xl border p-6 shadow-2xl transition-all duration-300"
+            className="w-full max-w-4xl rounded-xl border p-5 shadow-lg transition-colors duration-200"
           >
-            {/* Hero Storefront Banner */}
+            {/* Storefront Banner */}
             <div
               style={{
-                background: `linear-gradient(135deg, ${primary}, ${secondary})`,
-                color: getIdealTextColor(primary),
+                backgroundColor: surface,
+                borderColor: borderCol,
+                color: textPrimary,
               }}
-              className="p-6 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 shadow-lg"
+              className="p-5 rounded-lg border flex flex-col sm:flex-row items-center justify-between gap-4 mb-5 shadow-sm"
             >
               <div>
-                <span className="text-[10px] font-mono tracking-widest uppercase bg-black/20 px-2.5 py-1 rounded-full">
-                  Curated Collection
+                <span style={{ color: primary }} className="text-[10px] font-mono tracking-wider uppercase font-semibold">
+                  Hardware Studio
                 </span>
-                <h3 className="text-xl font-bold mt-2">Nordic Titanium Chronograph</h3>
-                <p className="text-xs opacity-90 mt-1">Precision milled aerospace titanium timepiece.</p>
+                <h3 className="text-base font-semibold mt-1">Titanium Precision Caliper</h3>
+                <p style={{ color: textMuted }} className="text-xs mt-0.5">Milled aerospace titanium reference gauge.</p>
               </div>
               <button
-                style={{ backgroundColor: '#FFFFFF', color: '#0B0C10' }}
-                className="px-5 py-2 rounded-xl text-xs font-bold shadow-lg transition-transform hover:scale-105 shrink-0"
+                style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
+                className="px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition-colors shrink-0"
               >
-                Shop Now • $340
+                Inspect specs • $340
               </button>
             </div>
 
             {/* Product Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                { name: 'Onyx Wireless ANC', price: '$220', rating: 4.9, col: primary },
-                { name: 'Mechanical Sculpt Keyboard', price: '$180', rating: 4.8, col: secondary },
-                { name: 'Minimalist Leather Desk Pad', price: '$85', rating: 4.9, col: accent },
+                { name: 'Acoustic Reference Headset', price: '$220', rating: 4.9, col: primary },
+                { name: 'Mechanical Grid Keyboard', price: '$180', rating: 4.8, col: secondary },
+                { name: 'Anodized Desk Organiser', price: '$85', rating: 4.9, col: accent },
               ].map((prod) => (
                 <div
                   key={prod.name}
                   style={{ backgroundColor: surface, borderColor: borderCol }}
-                  className="p-4 rounded-xl border flex flex-col justify-between shadow-sm"
+                  className="p-3.5 rounded-lg border flex flex-col justify-between shadow-sm"
                 >
                   <div
-                    style={{ backgroundColor: `${prod.col}18` }}
-                    className="h-28 rounded-lg mb-3 flex items-center justify-center border border-black/5"
+                    style={{ backgroundColor: `${prod.col}14` }}
+                    className="h-24 rounded-md mb-3 flex items-center justify-center border border-black/5"
                   >
-                    <ShoppingBag style={{ color: prod.col }} className="w-8 h-8 opacity-75" />
+                    <ShoppingBag style={{ color: prod.col }} className="w-6 h-6 opacity-80" />
                   </div>
                   <div>
                     <div className="flex items-center gap-1 text-[11px] text-amber-400 mb-1">
                       <Star className="w-3 h-3 fill-current" />
-                      <span>{prod.rating}</span>
+                      <span className="font-mono tabular-nums">{prod.rating}</span>
                     </div>
                     <h5 style={{ color: textPrimary }} className="text-xs font-semibold">{prod.name}</h5>
                   </div>
-                  <div style={{ borderColor: borderCol }} className="flex items-center justify-between mt-4 pt-3 border-t">
-                    <span style={{ color: textPrimary }} className="text-sm font-bold font-mono">{prod.price}</span>
+                  <div style={{ borderColor: borderCol }} className="flex items-center justify-between mt-3 pt-2.5 border-t">
+                    <span style={{ color: textPrimary }} className="text-xs font-bold font-mono tabular-nums">{prod.price}</span>
                     <button
                       style={{ backgroundColor: prod.col, color: getIdealTextColor(prod.col) }}
-                      className="px-3 py-1 rounded-lg text-[11px] font-semibold shadow-sm"
+                      className="px-2.5 py-1 rounded-md text-[11px] font-medium shadow-sm"
                     >
-                      Add to Cart
+                      Add
                     </button>
                   </div>
                 </div>
@@ -356,66 +356,67 @@ export const WebsitePreview: React.FC = () => {
         {previewMode === 'mobile' && (
           <div
             style={{ backgroundColor: bg }}
-            className="w-72 rounded-[32px] border-4 border-[#272B36] p-4 shadow-2xl flex flex-col gap-4 transition-all duration-300"
+            className="w-72 rounded-2xl border-2 border-[#222632] p-4 shadow-xl flex flex-col gap-3.5 transition-colors duration-200"
           >
-            <div className="w-24 h-4 bg-[#272B36] rounded-full mx-auto" />
+            <div className="w-16 h-1 bg-[#222632] rounded-full mx-auto" />
 
             <div className="flex items-center justify-between">
               <div>
-                <span style={{ color: textMuted }} className="text-[10px] block">Welcome back,</span>
-                <span style={{ color: textPrimary }} className="text-sm font-bold">Alex Morgan</span>
+                <span style={{ color: textMuted }} className="text-[10px] block">Oct 2026</span>
+                <span style={{ color: textPrimary }} className="text-xs font-semibold">Production Node</span>
               </div>
               <div
                 style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow"
+                className="w-7 h-7 rounded-md flex items-center justify-center text-xs font-bold font-mono"
               >
-                AM
+                PN
               </div>
             </div>
 
             <div
               style={{
-                background: `linear-gradient(135deg, ${primary}, ${secondary})`,
-                color: getIdealTextColor(primary),
+                backgroundColor: surface,
+                borderColor: borderCol,
+                color: textPrimary,
               }}
-              className="p-4 rounded-2xl shadow-lg"
+              className="p-3.5 rounded-xl border shadow-sm"
             >
-              <span className="text-[10px] opacity-80 block">Total Balance</span>
-              <span className="text-xl font-bold font-mono block mt-1">$24,850.40</span>
-              <div className="flex justify-between items-center mt-4 text-[10px]">
-                <span className="font-mono">•••• 4829</span>
-                <span className="bg-black/20 px-2 py-0.5 rounded-full">Active</span>
+              <span style={{ color: textMuted }} className="text-[10px] block font-mono">Allocation balance</span>
+              <span className="text-lg font-bold font-mono tabular-nums block mt-0.5">$24,850.40</span>
+              <div className="flex justify-between items-center mt-3 text-[10px]">
+                <span style={{ color: textMuted }} className="font-mono">us-east-1a</span>
+                <span style={{ color: primary }} className="font-mono font-medium">99.98% online</span>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-2 text-center">
               {[
-                { label: 'Transfer', col: primary },
-                { label: 'Analytics', col: secondary },
-                { label: 'Rewards', col: accent },
+                { label: 'Metrics', col: primary },
+                { label: 'Traces', col: secondary },
+                { label: 'Alerts', col: accent },
               ].map((act) => (
                 <div
                   key={act.label}
                   style={{ backgroundColor: surface, borderColor: borderCol }}
-                  className="p-2.5 rounded-xl border flex flex-col items-center gap-1.5 shadow-sm"
+                  className="p-2 rounded-lg border flex flex-col items-center gap-1 shadow-sm"
                 >
-                  <div style={{ backgroundColor: `${act.col}25` }} className="w-6 h-6 rounded-lg flex items-center justify-center">
-                    <TrendingUp style={{ color: act.col }} className="w-3.5 h-3.5" />
+                  <div style={{ backgroundColor: `${act.col}20` }} className="w-6 h-6 rounded-md flex items-center justify-center">
+                    <TrendingUp style={{ color: act.col }} className="w-3 h-3" />
                   </div>
                   <span style={{ color: textPrimary }} className="text-[10px] font-medium">{act.label}</span>
                 </div>
               ))}
             </div>
 
-            <div style={{ backgroundColor: surface, borderColor: borderCol }} className="mt-2 p-2 rounded-xl flex justify-around border shadow-sm">
+            <div style={{ backgroundColor: surface, borderColor: borderCol }} className="mt-1 p-2 rounded-lg flex justify-around border shadow-sm">
               <div style={{ color: primary }} className="p-1">
-                <Laptop className="w-4 h-4" />
+                <Laptop className="w-3.5 h-3.5" />
               </div>
               <div style={{ color: textMuted }} className="p-1">
-                <Search className="w-4 h-4" />
+                <Search className="w-3.5 h-3.5" />
               </div>
               <div style={{ color: textMuted }} className="p-1">
-                <Users className="w-4 h-4" />
+                <Users className="w-3.5 h-3.5" />
               </div>
             </div>
           </div>
@@ -425,16 +426,16 @@ export const WebsitePreview: React.FC = () => {
         {previewMode === 'components' && (
           <div
             style={{ backgroundColor: bg }}
-            className="w-full max-w-4xl rounded-2xl border p-6 sm:p-8 shadow-2xl transition-all duration-300 space-y-6"
+            className="w-full max-w-4xl rounded-xl border p-5 sm:p-7 shadow-lg transition-colors duration-200 space-y-5"
           >
-            <div style={{ borderColor: borderCol }} className="flex items-center justify-between pb-4 border-b">
+            <div style={{ borderColor: borderCol }} className="flex items-center justify-between pb-3.5 border-b">
               <div>
-                <h3 style={{ color: textPrimary }} className="text-base font-bold">Design System Token Preview</h3>
+                <h3 style={{ color: textPrimary }} className="text-sm font-semibold">Design token preview</h3>
                 <p style={{ color: textMuted }} className="text-xs">Live component variants mapped to your palette tokens</p>
               </div>
               <span
-                style={{ backgroundColor: `${primary}20`, color: primary, borderColor: `${primary}40` }}
-                className="px-2.5 py-1 rounded-full text-xs font-mono font-semibold border"
+                style={{ backgroundColor: `${primary}18`, color: primary, borderColor: `${primary}30` }}
+                className="px-2 py-0.5 rounded text-[11px] font-mono font-medium border"
               >
                 Tokens Active
               </span>
@@ -442,65 +443,64 @@ export const WebsitePreview: React.FC = () => {
 
             {/* Buttons Row */}
             <div className="space-y-2">
-              <span style={{ color: textMuted }} className="text-xs font-medium block">Interactive Buttons</span>
-              <div className="flex flex-wrap items-center gap-3">
+              <span style={{ color: textMuted }} className="text-xs font-medium block">Interactive controls</span>
+              <div className="flex flex-wrap items-center gap-2.5">
                 <button
                   style={{ backgroundColor: primary, color: getIdealTextColor(primary) }}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold shadow-md transition-transform hover:scale-105"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-colors"
                 >
                   Primary CTA
                 </button>
                 <button
                   style={{ backgroundColor: secondary, color: getIdealTextColor(secondary) }}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold shadow-md transition-transform hover:scale-105"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-colors"
                 >
-                  Secondary Action
+                  Secondary action
                 </button>
                 <button
-                  style={{ backgroundColor: `${accent}25`, color: accent, borderColor: `${accent}40` }}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold border transition-all hover:opacity-90"
+                  style={{ backgroundColor: `${accent}20`, color: accent, borderColor: `${accent}35` }}
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border transition-colors hover:opacity-90"
                 >
-                  Accent Soft
+                  Accent soft
                 </button>
                 <button
                   style={{ backgroundColor: surface, borderColor: borderCol, color: textPrimary }}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold border"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium border"
                 >
-                  Outline Neutral
+                  Outline neutral
                 </button>
               </div>
             </div>
 
             {/* Form Controls & Badges */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-4 rounded-xl border space-y-3">
-                <span style={{ color: textPrimary }} className="text-xs font-semibold block">Form Inputs & Focus Glow</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-3.5 rounded-lg border space-y-2">
+                <span style={{ color: textPrimary }} className="text-xs font-semibold block">Input field state</span>
                 <div className="relative">
                   <input
                     type="text"
-                    defaultValue="hello@huelab.studio"
+                    defaultValue="tokens@huelab.studio"
                     style={{
                       backgroundColor: bg,
                       color: textPrimary,
                       borderColor: primary,
-                      boxShadow: `0 0 0 2px ${primary}33`,
                     }}
-                    className="w-full px-3 py-2 rounded-lg text-xs border focus:outline-none"
+                    className="w-full px-3 py-1.5 rounded-md text-xs border focus:outline-none font-mono"
                   />
-                  <Check style={{ color: primary }} className="w-3.5 h-3.5 absolute right-3 top-1/2 -translate-y-1/2" />
+                  <Check style={{ color: primary }} className="w-3.5 h-3.5 absolute right-2.5 top-1/2 -translate-y-1/2" />
                 </div>
               </div>
 
-              <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-4 rounded-xl border space-y-3">
-                <span style={{ color: textPrimary }} className="text-xs font-semibold block">Status & Category Chips</span>
+              <div style={{ backgroundColor: surface, borderColor: borderCol }} className="p-3.5 rounded-lg border space-y-2">
+                <span style={{ color: textPrimary }} className="text-xs font-semibold block">Semantic token chips</span>
                 <div className="flex flex-wrap gap-2">
-                  <span style={{ backgroundColor: `${primary}20`, color: primary }} className="px-2.5 py-1 rounded-md text-[11px] font-medium">
+                  <span style={{ backgroundColor: `${primary}20`, color: primary }} className="px-2 py-0.5 rounded text-[11px] font-mono">
                     --color-primary
                   </span>
-                  <span style={{ backgroundColor: `${secondary}20`, color: secondary }} className="px-2.5 py-1 rounded-md text-[11px] font-medium">
+                  <span style={{ backgroundColor: `${secondary}20`, color: secondary }} className="px-2 py-0.5 rounded text-[11px] font-mono">
                     --color-secondary
                   </span>
-                  <span style={{ backgroundColor: `${accent}20`, color: accent }} className="px-2.5 py-1 rounded-md text-[11px] font-medium">
+                  <span style={{ backgroundColor: `${accent}20`, color: accent }} className="px-2 py-0.5 rounded text-[11px] font-mono">
                     --color-accent
                   </span>
                 </div>
@@ -511,27 +511,27 @@ export const WebsitePreview: React.FC = () => {
       </div>
 
       {/* Bottom Token Inspector Ribbon */}
-      <div className="p-3 bg-[#0B0C10] border-t border-[#272B36] flex flex-wrap items-center justify-between gap-3 text-xs">
+      <div className="px-4 py-2.5 bg-[#0A0B0E] border-t border-[#222632] flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-[#626A78] font-mono text-[11px]">ACTIVE TOKENS:</span>
+          <span className="text-[#64748B] font-mono text-[11px]">ACTIVE TOKENS:</span>
           <div className="flex items-center gap-1.5">
-            <span style={{ backgroundColor: primary }} className="w-2.5 h-2.5 rounded-full" />
-            <span className="text-[#F4F5F7] font-mono text-[11px]">Primary ({primary})</span>
+            <span style={{ backgroundColor: primary }} className="w-2.5 h-2.5 rounded-sm" />
+            <span className="text-[#F1F3F7] font-mono text-[11px]">Primary ({primary})</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span style={{ backgroundColor: secondary }} className="w-2.5 h-2.5 rounded-full" />
-            <span className="text-[#F4F5F7] font-mono text-[11px]">Secondary ({secondary})</span>
+            <span style={{ backgroundColor: secondary }} className="w-2.5 h-2.5 rounded-sm" />
+            <span className="text-[#F1F3F7] font-mono text-[11px]">Secondary ({secondary})</span>
           </div>
           <div className="flex items-center gap-1.5">
-            <span style={{ backgroundColor: accent }} className="w-2.5 h-2.5 rounded-full" />
-            <span className="text-[#F4F5F7] font-mono text-[11px]">Accent ({accent})</span>
+            <span style={{ backgroundColor: accent }} className="w-2.5 h-2.5 rounded-sm" />
+            <span className="text-[#F1F3F7] font-mono text-[11px]">Accent ({accent})</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-[11px] font-mono">
-          <span className="text-[#626A78]">Text vs BG:</span>
+        <div className="flex items-center gap-3 text-[11px] font-mono tabular-nums">
+          <span className="text-[#64748B]">Text vs BG:</span>
           <span className="text-emerald-400 font-semibold">{textOnBgRatio}:1</span>
-          <span className="text-[#626A78]">Text vs Surface:</span>
+          <span className="text-[#64748B]">Text vs Surface:</span>
           <span className="text-emerald-400 font-semibold">{textOnSurfaceRatio}:1</span>
         </div>
       </div>

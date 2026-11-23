@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from './Modal';
 import { useHueStore } from '../../store/useHueStore';
-import { Sparkles, Bot, AlertTriangle, Key } from 'lucide-react';
+import { Wand2, Bot, AlertTriangle, Key } from 'lucide-react';
 import { generatePalette } from '../../engine/paletteGenerator';
 import { getColorName } from '../../engine/colorNaming';
 import { isValidHex, normalizeHex } from '../../engine/colorConversion';
@@ -81,9 +81,7 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
     setIsGenerating(true);
 
     try {
-      // If user has provided a custom API key, we could call standard endpoint.
-      // HueLab also implements the specified intelligent local semantic engine fallback.
-      await new Promise((res) => setTimeout(res, 600));
+      await new Promise((res) => setTimeout(res, 400));
 
       const lower = trimmed.toLowerCase();
       let matchedTheme = Object.keys(MOOD_DICTIONARY).find((k) => lower.includes(k));
@@ -92,7 +90,6 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
       if (matchedTheme) {
         finalHexes = MOOD_DICTIONARY[matchedTheme].colors;
       } else {
-        // Fallback: derive palette from prompt hash
         let hash = 0;
         for (let i = 0; i < trimmed.length; i++) {
           hash = trimmed.charCodeAt(i) + ((hash << 5) - hash);
@@ -106,7 +103,6 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
         finalHexes = generated.colors.map((c) => c.hex);
       }
 
-      // Strict validation of all returned hex colors
       const validHexes = finalHexes.filter(isValidHex).map(normalizeHex);
       if (validHexes.length < 2) {
         throw new Error('Color validation failed on generated output.');
@@ -127,7 +123,7 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
         createdAt: Date.now(),
       });
 
-      addToast('AI Palette generated and loaded!', 'success');
+      addToast('Palette generated from semantic concept', 'success');
       onClose();
     } catch (err: any) {
       addToast(err?.message || 'Error generating AI palette', 'error');
@@ -138,7 +134,7 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
 
   const handleSaveKey = () => {
     updatePreferences({ aiApiKey: customKey.trim() });
-    addToast('API Key saved locally', 'success');
+    addToast('API key saved locally', 'success');
     setShowConfig(false);
   };
 
@@ -146,36 +142,36 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="AI Color Intelligence"
-      description="Describe your visual concept, brand emotion, or design mood in natural language."
+      title="Semantic color synthesis"
+      description="Synthesize harmonious palettes from descriptive creative prompts"
       maxWidth="max-w-xl"
     >
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-4">
         {/* Input prompt area */}
         <div>
-          <label className="block text-xs font-medium text-[#9298A6] mb-2">Prompt or Concept</label>
+          <label className="block text-xs font-medium text-[#8E95A5] mb-1.5">Creative concept or domain</label>
           <div className="relative">
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="e.g. A luxury black and gold brand for an artisanal Swiss watchmaker..."
-              className="w-full h-24 p-3.5 bg-[#0B0C10] border border-[#272B36] rounded-xl text-sm text-[#F4F5F7] placeholder-[#626A78] focus:outline-none focus:border-[#7C5CFC] transition-colors resize-none"
+              placeholder="e.g. Precision dark analytics workstation for orbital satellite tracking..."
+              className="w-full h-20 p-3 bg-[#08090C] border border-[#222632] rounded-lg text-xs text-[#F1F3F7] placeholder-[#64748B] focus:outline-none focus:border-[#3A4154] transition-colors resize-none"
             />
-            <div className="absolute bottom-3 right-3">
-              <Bot className="w-4 h-4 text-[#626A78]" />
+            <div className="absolute bottom-2.5 right-2.5">
+              <Bot className="w-4 h-4 text-[#64748B]" />
             </div>
           </div>
         </div>
 
         {/* Suggestion Chips */}
         <div>
-          <span className="block text-xs text-[#626A78] mb-2">Quick Ideas:</span>
-          <div className="flex flex-wrap gap-2">
+          <span className="block text-[11px] text-[#64748B] mb-1.5">Examples:</span>
+          <div className="flex flex-wrap gap-1.5">
             {samplePrompts.map((p) => (
               <button
                 key={p}
                 onClick={() => setPrompt(p)}
-                className="px-2.5 py-1 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] text-[#9298A6] hover:text-[#F4F5F7] text-xs rounded-lg transition-colors"
+                className="h-6 px-2 bg-[#141720] hover:bg-[#1E2330] border border-[#222632] text-[#8E95A5] hover:text-[#F1F3F7] text-[11px] rounded transition-colors"
               >
                 {p}
               </button>
@@ -184,19 +180,19 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
         </div>
 
         {/* Local intelligence vs Provider notice */}
-        <div className="p-3 bg-[#171A22] border border-[#272B36] rounded-xl flex items-start justify-between gap-3 text-xs">
+        <div className="p-3 bg-[#141720] border border-[#222632] rounded-lg flex items-start justify-between gap-3 text-xs">
           <div className="flex items-start gap-2.5">
-            <Sparkles className="w-4 h-4 text-[#A78BFA] shrink-0 mt-0.5" />
+            <Wand2 className="w-3.5 h-3.5 text-[#8E95A5] shrink-0 mt-0.5" />
             <div>
-              <p className="text-[#F4F5F7] font-medium">Smart Deterministic Local Engine</p>
-              <p className="text-[#9298A6] mt-0.5">
-                Analyzes semantic keywords, emotional tone, and color harmony. Works 100% locally and privately without requiring external API keys.
+              <p className="text-[#F1F3F7] font-medium text-xs">Local semantic engine</p>
+              <p className="text-[11px] text-[#64748B] mt-0.5 leading-relaxed">
+                Evaluates chromatic keywords, emotional undertones, and perceptual harmony. Operates deterministically without third-party API dependencies.
               </p>
             </div>
           </div>
           <button
             onClick={() => setShowConfig(!showConfig)}
-            className="text-[#A78BFA] hover:underline shrink-0 text-xs flex items-center gap-1"
+            className="text-[#8E95A5] hover:text-[#F1F3F7] shrink-0 text-xs flex items-center gap-1"
           >
             <Key className="w-3 h-3" />
             <span>{showConfig ? 'Hide' : 'API Key'}</span>
@@ -205,25 +201,25 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
 
         {/* Optional Custom API Key Config */}
         {showConfig && (
-          <div className="p-3.5 bg-[#0B0C10] border border-[#272B36] rounded-xl flex flex-col gap-3 animate-fade-in text-xs">
-            <div className="flex items-center gap-2 text-amber-400 font-medium">
-              <AlertTriangle className="w-4 h-4 shrink-0" />
-              <span>Client-Side Key (Private LocalStorage Only)</span>
+          <div className="p-3 bg-[#08090C] border border-[#222632] rounded-lg flex flex-col gap-2.5 text-xs">
+            <div className="flex items-center gap-2 text-amber-400 font-medium text-[11px]">
+              <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+              <span>Client-side storage only</span>
             </div>
-            <p className="text-[11px] text-[#9298A6] leading-relaxed">
-              HueLab never exposes secrets through build variables or remote logging. Any key configured here is saved exclusively in your browser's private storage.
+            <p className="text-[11px] text-[#64748B] leading-relaxed">
+              HueLab never exposes secrets or proxies requests through remote servers.
             </p>
             <input
               type="password"
               value={customKey}
               onChange={(e) => setCustomKey(e.target.value)}
               placeholder="sk-... or AIzaSy..."
-              className="w-full px-3 py-2 bg-[#171A22] border border-[#272B36] rounded-lg text-xs text-[#F4F5F7] placeholder-[#626A78] focus:outline-none focus:border-[#7C5CFC]"
+              className="w-full h-8 px-2.5 bg-[#141720] border border-[#222632] rounded-md text-xs text-[#F1F3F7] placeholder-[#64748B] focus:outline-none focus:border-[#3A4154]"
             />
             <div className="flex justify-end">
               <button
                 onClick={handleSaveKey}
-                className="px-3 py-1.5 bg-[#7C5CFC] hover:bg-[#6D28D9] text-white rounded-lg text-xs font-medium"
+                className="h-7 px-3 bg-[#F1F3F7] hover:bg-white text-[#0B0C10] rounded text-xs font-semibold"
               >
                 Save Key
               </button>
@@ -232,20 +228,20 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
         )}
 
         {/* Action Button */}
-        <div className="flex items-center justify-end gap-3 pt-2">
+        <div className="flex items-center justify-end gap-2 pt-1">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-sm text-[#9298A6] hover:text-[#F4F5F7] transition-colors"
+            className="h-8 px-3 text-xs text-[#8E95A5] hover:text-[#F1F3F7] transition-colors"
           >
             Cancel
           </button>
           <button
             onClick={handleGenerate}
             disabled={!prompt.trim() || isGenerating}
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#7C5CFC] hover:bg-[#6D28D9] disabled:opacity-50 text-white text-sm font-medium rounded-xl shadow-lg transition-all active:scale-95"
+            className="flex items-center gap-1.5 h-8 px-3.5 bg-[#F1F3F7] hover:bg-white disabled:opacity-40 text-[#0B0C10] text-xs font-semibold rounded-lg btn-highlight shadow-sm transition-colors"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>{isGenerating ? 'Analyzing Concept...' : 'Generate AI Palette'}</span>
+            <Wand2 className="w-3.5 h-3.5" />
+            <span>{isGenerating ? 'Synthesizing...' : 'Generate palette'}</span>
           </button>
         </div>
       </div>

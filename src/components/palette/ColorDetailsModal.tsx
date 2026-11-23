@@ -166,26 +166,26 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
           <button
             onClick={handleSave}
             disabled={Boolean(hexError)}
-            className="px-4 py-2 bg-[#7C5CFC] hover:bg-[#6D28D9] disabled:opacity-40 text-white text-xs font-semibold rounded-xl shadow-md transition-all active:scale-95 shrink-0"
+            className="h-8 px-3.5 bg-[#F1F3F7] hover:bg-white disabled:opacity-30 text-[#0B0C10] text-xs font-semibold rounded-lg btn-highlight shadow-sm transition-colors shrink-0"
           >
-            Apply Changes
+            Apply changes
           </button>
         </div>
 
         {/* RGB Channel Direct Inputs */}
-        <div className="p-3.5 bg-[#171A22] border border-[#272B36] rounded-2xl space-y-2">
-          <span className="text-xs font-semibold text-[#F4F5F7]">RGB Channels (0-255)</span>
-          <div className="grid grid-cols-3 gap-3">
+        <div className="p-3 bg-[#141720] border border-[#222632] rounded-xl space-y-1.5">
+          <span className="text-xs font-medium text-[#F1F3F7]">RGB Channels (0-255)</span>
+          <div className="grid grid-cols-3 gap-2">
             {(['r', 'g', 'b'] as const).map((ch) => (
-              <div key={ch} className="flex items-center gap-2 bg-[#0B0C10] border border-[#272B36] rounded-xl px-2.5 py-1.5">
-                <span className="text-[10px] font-mono text-[#626A78] uppercase">{ch}</span>
+              <div key={ch} className="flex items-center gap-2 bg-[#08090C] border border-[#222632] rounded-lg px-2.5 py-1">
+                <span className="text-[10px] font-mono text-[#64748B] uppercase">{ch}</span>
                 <input
                   type="number"
                   min={0}
                   max={255}
                   value={rgbState[ch]}
                   onChange={(e) => handleRgbChannelChange(ch, Number(e.target.value))}
-                  className="w-full bg-transparent text-xs font-mono font-semibold text-[#F4F5F7] focus:outline-none"
+                  className="w-full bg-transparent text-xs font-mono font-medium text-[#F1F3F7] focus:outline-none tabular-nums"
                 />
               </div>
             ))}
@@ -193,10 +193,10 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
         </div>
 
         {/* HSL Sliders & Direct Inputs */}
-        <div className="space-y-4 p-4 bg-[#171A22] border border-[#272B36] rounded-2xl">
+        <div className="space-y-3 p-3.5 bg-[#141720] border border-[#222632] rounded-xl">
           <div className="flex items-center justify-between">
-            <h5 className="text-xs font-semibold text-[#F4F5F7]">Perceptual HSL Controls</h5>
-            <div className="flex items-center gap-2 text-xs font-mono text-[#9298A6]">
+            <h5 className="text-xs font-medium text-[#F1F3F7]">Perceptual HSL controls</h5>
+            <div className="flex items-center gap-2 text-xs font-mono text-[#8E95A5] tabular-nums">
               <span>H:{hslState.h}°</span>
               <span>S:{hslState.s}%</span>
               <span>L:{hslState.l}%</span>
@@ -274,16 +274,16 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
         </div>
 
         {/* Synchronized Color Value Formats with Copy */}
-        <div className="space-y-2">
-          <h5 className="text-xs font-semibold text-[#F4F5F7]">Synchronized Value Representations</h5>
+        <div className="space-y-1.5">
+          <h5 className="text-xs font-medium text-[#F1F3F7]">Synchronized coordinate formats</h5>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
             {/* HEX */}
-            <div className="flex items-center justify-between p-2.5 bg-[#0B0C10] border border-[#272B36] rounded-xl font-mono">
-              <span className="text-[#626A78]">HEX</span>
-              <span className="text-[#F4F5F7] font-semibold">{isValidHex(hexInput) ? normalizeHex(hexInput) : hexInput}</span>
+            <div className="flex items-center justify-between p-2 bg-[#08090C] border border-[#222632] rounded-lg font-mono">
+              <span className="text-[#64748B]">HEX</span>
+              <span className="text-[#F1F3F7] font-semibold tabular-nums">{isValidHex(hexInput) ? normalizeHex(hexInput) : hexInput}</span>
               <button
                 onClick={() => handleCopy(hexInput, 'hex')}
-                className="text-[#9298A6] hover:text-white p-1"
+                className="text-[#8E95A5] hover:text-[#F1F3F7] p-1"
                 aria-label="Copy HEX"
               >
                 {copiedKey === 'hex' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -291,12 +291,12 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
             </div>
 
             {/* RGB */}
-            <div className="flex items-center justify-between p-2.5 bg-[#0B0C10] border border-[#272B36] rounded-xl font-mono">
-              <span className="text-[#626A78]">RGB</span>
-              <span className="text-[#F4F5F7]">rgb({rgbState.r}, {rgbState.g}, {rgbState.b})</span>
+            <div className="flex items-center justify-between p-2 bg-[#08090C] border border-[#222632] rounded-lg font-mono">
+              <span className="text-[#64748B]">RGB</span>
+              <span className="text-[#F1F3F7] tabular-nums">rgb({rgbState.r}, {rgbState.g}, {rgbState.b})</span>
               <button
                 onClick={() => handleCopy(`rgb(${rgbState.r}, ${rgbState.g}, ${rgbState.b})`, 'rgb')}
-                className="text-[#9298A6] hover:text-white p-1"
+                className="text-[#8E95A5] hover:text-[#F1F3F7] p-1"
                 aria-label="Copy RGB"
               >
                 {copiedKey === 'rgb' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -304,12 +304,12 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
             </div>
 
             {/* HSL */}
-            <div className="flex items-center justify-between p-2.5 bg-[#0B0C10] border border-[#272B36] rounded-xl font-mono">
-              <span className="text-[#626A78]">HSL</span>
-              <span className="text-[#F4F5F7]">hsl({hslState.h}, {hslState.s}%, {hslState.l}%)</span>
+            <div className="flex items-center justify-between p-2 bg-[#08090C] border border-[#222632] rounded-lg font-mono">
+              <span className="text-[#64748B]">HSL</span>
+              <span className="text-[#F1F3F7] tabular-nums">hsl({hslState.h}, {hslState.s}%, {hslState.l}%)</span>
               <button
                 onClick={() => handleCopy(`hsl(${hslState.h}, ${hslState.s}%, ${hslState.l}%)`, 'hsl')}
-                className="text-[#9298A6] hover:text-white p-1"
+                className="text-[#8E95A5] hover:text-[#F1F3F7] p-1"
                 aria-label="Copy HSL"
               >
                 {copiedKey === 'hsl' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -317,14 +317,14 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
             </div>
 
             {/* OKLCH */}
-            <div className="flex items-center justify-between p-2.5 bg-[#0B0C10] border border-[#272B36] rounded-xl font-mono">
-              <span className="text-[#626A78]">OKLCH</span>
-              <span className="text-[#F4F5F7]">
+            <div className="flex items-center justify-between p-2 bg-[#08090C] border border-[#222632] rounded-lg font-mono">
+              <span className="text-[#64748B]">OKLCH</span>
+              <span className="text-[#F1F3F7] tabular-nums">
                 {(oklchState.l * 100).toFixed(0)}% {oklchState.c.toFixed(2)} {oklchState.h.toFixed(0)}
               </span>
               <button
                 onClick={() => handleCopy(`oklch(${(oklchState.l * 100).toFixed(1)}% ${oklchState.c.toFixed(3)} ${oklchState.h.toFixed(1)})`, 'oklch')}
-                className="text-[#9298A6] hover:text-white p-1"
+                className="text-[#8E95A5] hover:text-[#F1F3F7] p-1"
                 aria-label="Copy OKLCH"
               >
                 {copiedKey === 'oklch' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
@@ -334,17 +334,17 @@ export const ColorDetailsModal: React.FC<ColorDetailsModalProps> = ({
         </div>
 
         {/* Live Contrast Assessment */}
-        <div className="p-3.5 bg-[#171A22] border border-[#272B36] rounded-xl flex items-center justify-between text-xs">
+        <div className="p-3 bg-[#141720] border border-[#222632] rounded-lg flex items-center justify-between text-xs">
           <div>
-            <span className="text-[#626A78] block">Contrast vs Dark #0B0C10:</span>
-            <span className="font-mono font-semibold text-[#F4F5F7]">{contrastAgainstDark.ratio}:1</span>
-            <span className="ml-1.5 text-[10px] text-emerald-400 font-medium">({contrastAgainstDark.score})</span>
+            <span className="text-[#64748B] block">Contrast vs dark surface:</span>
+            <span className="font-mono font-semibold text-[#F1F3F7] tabular-nums">{contrastAgainstDark.ratio}:1</span>
+            <span className="ml-1.5 text-[10px] text-emerald-400 font-mono">({contrastAgainstDark.score})</span>
           </div>
 
           <div className="text-right">
-            <span className="text-[#626A78] block">Contrast vs White #FFFFFF:</span>
-            <span className="font-mono font-semibold text-[#F4F5F7]">{contrastAgainstLight.ratio}:1</span>
-            <span className="ml-1.5 text-[10px] text-emerald-400 font-medium">({contrastAgainstLight.score})</span>
+            <span className="text-[#64748B] block">Contrast vs light surface:</span>
+            <span className="font-mono font-semibold text-[#F1F3F7] tabular-nums">{contrastAgainstLight.ratio}:1</span>
+            <span className="ml-1.5 text-[10px] text-emerald-400 font-mono">({contrastAgainstLight.score})</span>
           </div>
         </div>
       </div>

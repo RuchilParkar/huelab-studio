@@ -42,13 +42,13 @@ export const ColorConverterPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="space-y-4 max-w-7xl mx-auto">
       {/* Active Color Preview & Presets Header */}
-      <div className="p-6 bg-[#111319] border border-[#272B36] rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-5 w-full md:w-auto">
+      <div className="p-4 bg-[#0E1015] border border-[#222632] rounded-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-4 w-full md:w-auto">
           <div
             style={{ backgroundColor: validHex }}
-            className="w-20 h-20 rounded-2xl border border-white/20 shadow-2xl relative overflow-hidden shrink-0 cursor-pointer"
+            className="w-14 h-14 rounded-lg border border-white/20 shadow-inner relative overflow-hidden shrink-0 cursor-pointer"
           >
             <input
               type="color"
@@ -59,28 +59,28 @@ export const ColorConverterPage: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-xs font-mono text-[#626A78] uppercase">Active Hue</span>
-            <h3 className="text-xl font-bold text-[#F4F5F7] mt-0.5">{colorName}</h3>
-            <p className="text-xs font-mono text-[#A78BFA] mt-0.5">{validHex}</p>
+            <span className="text-[11px] font-mono text-[#64748B]">Active tone</span>
+            <h3 className="text-base font-semibold text-[#F1F3F7] mt-0.5">{colorName}</h3>
+            <p className="text-xs font-mono text-[#8E95A5] tabular-nums mt-0.5">{validHex}</p>
           </div>
         </div>
 
         {/* Quick Presets */}
-        <div className="flex flex-wrap items-center gap-2 self-start md:self-center">
-          <span className="text-xs text-[#626A78] mr-1 hidden sm:inline">Examples:</span>
+        <div className="flex flex-wrap items-center gap-1.5 self-start md:self-center">
+          <span className="text-xs text-[#64748B] mr-1 hidden sm:inline">Presets:</span>
           {PRESET_COLORS.map((p) => (
             <button
               key={p.hex}
               onClick={() => setActiveHex(p.hex)}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] rounded-xl text-xs text-[#9298A6] hover:text-[#F4F5F7] transition-all"
+              className="flex items-center gap-1.5 h-7 px-2.5 bg-[#141720] hover:bg-[#1E2330] border border-[#222632] rounded-lg text-xs text-[#8E95A5] hover:text-[#F1F3F7] transition-colors"
             >
-              <span style={{ backgroundColor: p.hex }} className="w-2.5 h-2.5 rounded-full" />
+              <span style={{ backgroundColor: p.hex }} className="w-2 h-2 rounded-full" />
               <span>{p.name}</span>
             </button>
           ))}
           <button
             onClick={handleReset}
-            className="p-2 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] text-[#9298A6] hover:text-[#F4F5F7] rounded-xl transition-all"
+            className="w-7 h-7 flex items-center justify-center bg-[#141720] hover:bg-[#1E2330] border border-[#222632] text-[#8E95A5] hover:text-[#F1F3F7] rounded-lg transition-colors"
             title="Reset"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -89,14 +89,14 @@ export const ColorConverterPage: React.FC = () => {
       </div>
 
       {/* Conversion Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {[
-          { label: 'HEX', val: formats.hex, desc: '6-digit standard web hexadecimal' },
+          { label: 'HEX', val: formats.hex, desc: '6-digit standard hexadecimal representation' },
           { label: 'RGB', val: formats.rgbString, desc: 'Red, Green, Blue integer channels (0-255)' },
-          { label: 'RGBA', val: formats.rgbaString, desc: 'RGB with alpha transparency channel' },
-          { label: 'HSL', val: formats.hslString, desc: 'Hue (0-360°), Saturation (%), Lightness (%)' },
+          { label: 'RGBA', val: formats.rgbaString, desc: 'RGB with normalized alpha channel' },
+          { label: 'HSL', val: formats.hslString, desc: 'Hue angle, Saturation %, Lightness %' },
           { label: 'HSLA', val: formats.hslaString, desc: 'HSL with alpha channel' },
-          { label: 'HSV / HSB', val: formats.hsvString, desc: 'Hue, Saturation, Value/Brightness' },
+          { label: 'HSV / HSB', val: formats.hsvString, desc: 'Hue, Saturation, Value brightness' },
           {
             label: 'OKLCH',
             val: formats.oklchString,
@@ -105,28 +105,28 @@ export const ColorConverterPage: React.FC = () => {
         ].map((item) => (
           <div
             key={item.label}
-            className="p-5 bg-[#111319] border border-[#272B36] rounded-2xl flex flex-col justify-between hover:border-[#7C5CFC]/50 transition-all"
+            className="p-3.5 bg-[#0E1015] border border-[#222632] rounded-xl flex flex-col justify-between hover:border-[#2D3344] transition-colors"
           >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-semibold text-[#A78BFA] tracking-wide">{item.label}</span>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs font-mono font-medium text-[#8E95A5]">{item.label}</span>
               <button
                 onClick={() => handleCopy(item.val, item.label)}
-                className="flex items-center gap-1.5 px-2.5 py-1 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] text-[#9298A6] hover:text-[#F4F5F7] text-xs rounded-lg transition-all"
+                className="flex items-center gap-1.5 h-6 px-2 bg-[#141720] hover:bg-[#1E2330] border border-[#222632] text-[#8E95A5] hover:text-[#F1F3F7] text-[11px] rounded transition-colors"
               >
                 {copiedKey === item.label ? (
-                  <Check className="w-3.5 h-3.5 text-emerald-400" />
+                  <Check className="w-3 h-3 text-emerald-400" />
                 ) : (
-                  <Copy className="w-3.5 h-3.5" />
+                  <Copy className="w-3 h-3" />
                 )}
                 <span>{copiedKey === item.label ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
 
-            <div className="font-mono text-sm sm:text-base font-bold text-[#F4F5F7] select-all my-1">
+            <div className="font-mono text-sm font-semibold text-[#F1F3F7] tabular-nums select-all my-1">
               {item.val}
             </div>
 
-            <p className="text-[11px] text-[#626A78] mt-2">{item.desc}</p>
+            <p className="text-[11px] text-[#64748B] mt-1.5">{item.desc}</p>
           </div>
         ))}
       </div>

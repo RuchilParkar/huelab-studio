@@ -21,17 +21,17 @@ export const ShortcutsModal: React.FC<ShortcutsModalProps> = ({ isOpen, onClose 
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Keyboard Shortcuts"
-      description="Accelerate your workflow with quick keyboard navigation."
+      title="Keyboard shortcuts"
+      description="Studio navigation and canvas shortcuts"
       maxWidth="max-w-md"
     >
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-2">
         {shortcuts.map((s) => (
           <div
             key={s.key}
-            className="flex items-center justify-between p-2.5 bg-[#171A22] border border-[#272B36] rounded-xl"
+            className="flex items-center justify-between p-2.5 bg-[#141720] border border-[#222632] rounded-lg"
           >
-            <span className="text-xs text-[#9298A6]">{s.desc}</span>
+            <span className="text-xs text-[#8E95A5]">{s.desc}</span>
             <span className="kbd-badge">{s.key}</span>
           </div>
         ))}

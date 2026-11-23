@@ -41,27 +41,27 @@ export const Modal: React.FC<ModalProps> = ({
 
       {/* Modal Dialog */}
       <div
-        className={`relative w-full ${maxWidth} bg-[#111319] border border-[#272B36] rounded-2xl shadow-2xl z-10 overflow-hidden animate-scale-in max-h-[90vh] flex flex-col`}
+        className={`relative w-full ${maxWidth} bg-[#0E1015] border border-[#222632] rounded-xl shadow-2xl z-10 overflow-hidden max-h-[90vh] flex flex-col`}
         role="dialog"
         aria-modal="true"
       >
         {(title || description) && (
-          <div className="flex items-start justify-between p-6 border-b border-[#272B36] shrink-0">
+          <div className="flex items-start justify-between px-5 py-4 border-b border-[#222632] shrink-0">
             <div>
-              {title && <h2 className="text-lg font-semibold text-[#F4F5F7]">{title}</h2>}
-              {description && <p className="text-sm text-[#9298A6] mt-1">{description}</p>}
+              {title && <h2 className="text-sm font-semibold text-[#F1F3F7]">{title}</h2>}
+              {description && <p className="text-xs text-[#8E95A5] mt-0.5">{description}</p>}
             </div>
             <button
               onClick={onClose}
-              className="text-[#9298A6] hover:text-[#F4F5F7] hover:bg-[#171A22] p-1.5 rounded-lg transition-colors ml-4"
+              className="text-[#64748B] hover:text-[#F1F3F7] hover:bg-[#141720] p-1 rounded-md transition-colors ml-4"
               aria-label="Close dialog"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         )}
 
-        <div className="p-6 overflow-y-auto flex-1">{children}</div>
+        <div className="p-5 overflow-y-auto flex-1">{children}</div>
       </div>
     </div>
   );

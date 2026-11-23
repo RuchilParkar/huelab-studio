@@ -10,52 +10,56 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   background-color: #0B0C10;
-  color: #F4F5F7;
+  color: #F1F3F7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom sleek dark scrollbar */
+/* Custom quiet dark scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #111319;
+  background: #0E1015;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #272B36;
-  border-radius: 3px;
+  background: #232733;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #626A78;
+  background: #3A4152;
 }
 
-/* Monospace font classes for color codes */
+/* Monospace font classes with tabular figures */
 .font-mono-code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
   font-feature-settings: 'tnum' on, 'zero' on;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Smooth color transitions for interactive swatches */
-.swatch-transition {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, opacity 0.2s ease;
-}
-
-/* Keyboard hint badge */
+/* Keyboard hint badge: tactile, restrained keycap */
 .kbd-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.15rem 0.4rem;
-  font-size: 0.7rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.68rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 500;
-  color: #9298A6;
-  background-color: #171A22;
-  border: 1px solid #272B36;
+  color: #8E95A5;
+  background-color: #171A23;
+  border: 1px solid #282D3B;
+  border-bottom-color: #1D212B;
   border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Subtle top highlight for solid buttons */
+.btn-highlight {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }

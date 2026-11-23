@@ -13,11 +13,11 @@ export const PaletteCanvas: React.FC = () => {
   return (
     <div className="w-full">
       {/* Responsive Color Swatches Container */}
-      <div className="flex flex-col md:flex-row gap-2.5 sm:gap-3 w-full items-stretch overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex flex-col md:flex-row gap-2 w-full items-stretch overflow-x-auto pb-1 scrollbar-none">
         {colors.map((color, index) => (
           <div
             key={color.id}
-            className={`flex-1 ${colors.length >= 7 ? 'md:min-w-[110px] lg:min-w-[130px]' : 'min-w-0'}`}
+            className={`flex-1 ${colors.length >= 7 ? 'md:min-w-[110px] lg:min-w-[124px]' : 'min-w-0'}`}
           >
             <ColorSwatch
               color={color}

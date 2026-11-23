@@ -55,19 +55,19 @@ export const SettingsPage: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div className="space-y-4 max-w-4xl mx-auto">
       {/* Studio Preferences */}
-      <div className="p-6 bg-[#111319] border border-[#272B36] rounded-2xl space-y-6">
-        <h3 className="text-sm font-semibold text-[#F4F5F7] flex items-center gap-2">
-          <Settings className="w-4 h-4 text-[#A78BFA]" />
-          <span>Generator Defaults & Preferences</span>
+      <div className="p-4 bg-[#0E1015] border border-[#222632] rounded-xl space-y-4">
+        <h3 className="text-xs font-semibold text-[#F1F3F7] flex items-center gap-2">
+          <Settings className="w-3.5 h-3.5 text-[#8E95A5]" />
+          <span>Studio preferences</span>
         </h3>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Default palette size */}
           <div>
-            <label className="text-xs text-[#9298A6] block mb-2 font-medium">
-              Default Palette Size ({preferences.defaultPaletteSize} colors)
+            <label className="text-xs text-[#8E95A5] block mb-1.5 font-medium">
+              Default palette size ({preferences.defaultPaletteSize} tones)
             </label>
             <input
               type="range"
@@ -75,17 +75,17 @@ export const SettingsPage: React.FC = () => {
               max={10}
               value={preferences.defaultPaletteSize}
               onChange={(e) => updatePreferences({ defaultPaletteSize: Number(e.target.value) })}
-              className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[#272B36] accent-[#A78BFA]"
+              className="w-full h-1.5 rounded appearance-none cursor-pointer bg-[#222632] accent-[#8E95A5]"
             />
           </div>
 
           {/* Default harmony */}
           <div>
-            <label className="text-xs text-[#9298A6] block mb-2 font-medium">Default Harmony Mode</label>
+            <label className="text-xs text-[#8E95A5] block mb-1.5 font-medium">Default harmony algorithm</label>
             <select
               value={preferences.defaultHarmony}
               onChange={(e) => updatePreferences({ defaultHarmony: e.target.value as HarmonyType })}
-              className="w-full px-3 py-2 bg-[#171A22] border border-[#272B36] text-[#F4F5F7] text-xs rounded-xl focus:outline-none focus:border-[#7C5CFC]"
+              className="w-full h-8 px-2.5 bg-[#141720] border border-[#222632] text-[#F1F3F7] text-xs rounded-lg focus:outline-none focus:border-[#3A4154]"
             >
               {harmonies.map((h) => (
                 <option key={h.id} value={h.id}>
@@ -96,68 +96,68 @@ export const SettingsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-2 border-t border-[#272B36] grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="pt-2 border-t border-[#222632] grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Keyboard shortcuts toggle */}
-          <label className="flex items-center justify-between p-3 bg-[#171A22] border border-[#272B36] rounded-xl cursor-pointer">
-            <div className="flex items-center gap-2.5">
-              <Keyboard className="w-4 h-4 text-[#A78BFA]" />
-              <span className="text-xs text-[#F4F5F7] font-medium">Enable Keyboard Shortcuts</span>
+          <label className="flex items-center justify-between p-2.5 bg-[#141720] border border-[#222632] rounded-lg cursor-pointer">
+            <div className="flex items-center gap-2">
+              <Keyboard className="w-3.5 h-3.5 text-[#8E95A5]" />
+              <span className="text-xs text-[#F1F3F7] font-medium">Keyboard shortcuts</span>
             </div>
             <input
               type="checkbox"
               checked={preferences.enableKeyboardShortcuts}
               onChange={(e) => updatePreferences({ enableKeyboardShortcuts: e.target.checked })}
-              className="w-4 h-4 rounded accent-[#7C5CFC] cursor-pointer"
+              className="w-3.5 h-3.5 rounded accent-[#8E95A5] cursor-pointer"
             />
           </label>
 
           {/* Reduced motion toggle */}
-          <label className="flex items-center justify-between p-3 bg-[#171A22] border border-[#272B36] rounded-xl cursor-pointer">
-            <div className="flex items-center gap-2.5">
-              <Cpu className="w-4 h-4 text-[#A78BFA]" />
-              <span className="text-xs text-[#F4F5F7] font-medium">Reduced Motion</span>
+          <label className="flex items-center justify-between p-2.5 bg-[#141720] border border-[#222632] rounded-lg cursor-pointer">
+            <div className="flex items-center gap-2">
+              <Cpu className="w-3.5 h-3.5 text-[#8E95A5]" />
+              <span className="text-xs text-[#F1F3F7] font-medium">Reduced motion</span>
             </div>
             <input
               type="checkbox"
               checked={preferences.reducedMotion}
               onChange={(e) => updatePreferences({ reducedMotion: e.target.checked })}
-              className="w-4 h-4 rounded accent-[#7C5CFC] cursor-pointer"
+              className="w-3.5 h-3.5 rounded accent-[#8E95A5] cursor-pointer"
             />
           </label>
         </div>
       </div>
 
       {/* Local Data & Backup Management */}
-      <div className="p-6 bg-[#111319] border border-[#272B36] rounded-2xl space-y-5">
-        <h3 className="text-sm font-semibold text-[#F4F5F7] flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>Local Workspace Data & Backups</span>
+      <div className="p-4 bg-[#0E1015] border border-[#222632] rounded-xl space-y-3.5">
+        <h3 className="text-xs font-semibold text-[#F1F3F7] flex items-center gap-2">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+          <span>Local workspace data</span>
         </h3>
-        <p className="text-xs text-[#9298A6] leading-relaxed">
-          HueLab stores all your color systems and favorites locally in your browser. You can export a full JSON backup or restore past data at any time.
+        <p className="text-xs text-[#8E95A5] leading-relaxed">
+          HueLab records your palettes, bookmarks, and parameters deterministically in browser LocalStorage. You can export complete snapshot archives or restore backups.
         </p>
 
-        <div className="flex flex-wrap items-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-2 pt-1">
           <button
             onClick={handleExportBackup}
-            className="flex items-center gap-2 px-4 py-2 bg-[#7C5CFC] hover:bg-[#6D28D9] text-white text-xs font-semibold rounded-xl shadow-md transition-all active:scale-95"
+            className="flex items-center gap-1.5 h-8 px-3 bg-[#F1F3F7] hover:bg-white text-[#0B0C10] text-xs font-semibold rounded-lg btn-highlight shadow-sm transition-colors"
           >
-            <Download className="w-4 h-4" />
-            <span>Export Full Backup JSON</span>
+            <Download className="w-3.5 h-3.5" />
+            <span>Export backup JSON</span>
           </button>
 
-          <label className="flex items-center gap-2 px-4 py-2 bg-[#171A22] hover:bg-[#272B36] border border-[#272B36] text-[#F4F5F7] text-xs font-semibold rounded-xl cursor-pointer transition-all">
-            <Upload className="w-4 h-4 text-[#A78BFA]" />
-            <span>Restore Backup JSON</span>
+          <label className="flex items-center gap-1.5 h-8 px-3 bg-[#141720] hover:bg-[#1E2330] border border-[#222632] text-[#F1F3F7] text-xs font-medium rounded-lg cursor-pointer transition-colors">
+            <Upload className="w-3.5 h-3.5 text-[#8E95A5]" />
+            <span>Restore backup</span>
             <input type="file" accept=".json" onChange={handleImportFile} className="hidden" />
           </label>
 
           <button
             onClick={clearHistory}
-            className="flex items-center gap-2 px-4 py-2 bg-[#171A22] hover:bg-rose-950/40 border border-[#272B36] hover:border-rose-800 text-rose-300 text-xs font-semibold rounded-xl transition-all"
+            className="flex items-center gap-1.5 h-8 px-3 bg-[#141720] hover:bg-rose-950/20 border border-[#222632] hover:border-rose-900/40 text-rose-300 text-xs font-medium rounded-lg transition-colors"
           >
-            <RotateCcw className="w-4 h-4" />
-            <span>Clear History</span>
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Clear history</span>
           </button>
         </div>
       </div>

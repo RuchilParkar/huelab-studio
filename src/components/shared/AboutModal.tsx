@@ -13,47 +13,52 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
       isOpen={isOpen}
       onClose={onClose}
       title="About HueLab"
-      description="Advanced Color Intelligence & Palette Studio"
+      description="Calibrated color studio and design-token workbench"
       maxWidth="max-w-md"
     >
-      <div className="flex flex-col gap-4 text-xs text-[#9298A6] leading-relaxed">
-        <div className="flex items-center gap-3 p-3 bg-[#0B0C10] border border-[#272B36] rounded-xl">
-          <div className="w-10 h-10 rounded-xl bg-[#7C5CFC]/20 border border-[#7C5CFC]/30 flex items-center justify-center text-[#A78BFA] shrink-0">
-            <Palette className="w-5 h-5" />
+      <div className="flex flex-col gap-3.5 text-xs text-[#8E95A5] leading-relaxed">
+        <div className="flex items-center gap-3 p-3 bg-[#08090C] border border-[#222632] rounded-lg">
+          <div className="w-8 h-8 rounded-md bg-[#141720] border border-[#2B303F] flex items-center justify-center shrink-0">
+            <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
+              <span className="bg-[#A78BFA] rounded-[1px]" />
+              <span className="bg-[#7C5CFC] rounded-[1px]" />
+              <span className="bg-[#38BDF8] rounded-[1px]" />
+              <span className="bg-[#F1F3F7] rounded-[1px]" />
+            </div>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-[#F4F5F7]">HueLab Studio v1.0.0</h4>
-            <p className="text-[#626A78]">Explore Color. Build Harmony.</p>
+            <h4 className="text-xs font-semibold text-[#F1F3F7]">HueLab Studio v1.0.0</h4>
+            <p className="text-[#64748B]">Optical color intelligence instrument</p>
           </div>
         </div>
 
         <p>
-          HueLab is engineered for UI/UX designers, creative technologists, and frontend developers who need mathematically accurate, perceptually uniform color palettes and production-ready design tokens.
+          HueLab is engineered for UI/UX designers, creative developers, and frontend architects who require deterministic color harmonies, perceptual lightness calibration, and exportable design tokens.
         </p>
 
-        <div className="grid grid-cols-2 gap-2 pt-2">
-          <div className="p-3 bg-[#171A22] border border-[#272B36] rounded-xl">
-            <Cpu className="w-4 h-4 text-[#A78BFA] mb-1.5" />
-            <h5 className="font-semibold text-[#F4F5F7] mb-0.5">Perceptual Engine</h5>
-            <p className="text-[11px] text-[#626A78]">OKLCH & HSL harmonic distribution</p>
+        <div className="grid grid-cols-2 gap-2 pt-1">
+          <div className="p-2.5 bg-[#141720] border border-[#222632] rounded-lg">
+            <Cpu className="w-3.5 h-3.5 text-[#8E95A5] mb-1" />
+            <h5 className="font-semibold text-[#F1F3F7] text-[11px] mb-0.5">Perceptual Engine</h5>
+            <p className="text-[10px] text-[#64748B]">OKLCH & HSL harmonic distribution</p>
           </div>
-          <div className="p-3 bg-[#171A22] border border-[#272B36] rounded-xl">
-            <ShieldCheck className="w-4 h-4 text-emerald-400 mb-1.5" />
-            <h5 className="font-semibold text-[#F4F5F7] mb-0.5">WCAG 2.2 Ready</h5>
-            <p className="text-[11px] text-[#626A78]">Mathematical contrast verification</p>
+          <div className="p-2.5 bg-[#141720] border border-[#222632] rounded-lg">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 mb-1" />
+            <h5 className="font-semibold text-[#F1F3F7] text-[11px] mb-0.5">WCAG 2.2 Ready</h5>
+            <p className="text-[10px] text-[#64748B]">Mathematical contrast verification</p>
           </div>
         </div>
 
-        <div className="p-3 bg-[#171A22] border border-[#272B36] rounded-xl flex items-center justify-between">
-          <div className="flex items-center gap-2 text-[#F4F5F7]">
-            <Code2 className="w-4 h-4 text-[#A78BFA]" />
-            <span>Zero Server Footprint</span>
+        <div className="p-2.5 bg-[#141720] border border-[#222632] rounded-lg flex items-center justify-between">
+          <div className="flex items-center gap-2 text-[#F1F3F7]">
+            <Code2 className="w-3.5 h-3.5 text-[#8E95A5]" />
+            <span>Zero server footprint</span>
           </div>
-          <span className="text-[11px] text-emerald-400 font-mono">100% Local</span>
+          <span className="text-[11px] text-emerald-400 font-mono">100% Client-side</span>
         </div>
 
-        <div className="text-center pt-2 text-[#626A78] text-[11px]">
-          Designed with intentional restraint and precision.
+        <div className="text-center pt-1 text-[#64748B] text-[11px]">
+          Designed with architectural restraint and functional clarity.
         </div>
       </div>
     </Modal>
