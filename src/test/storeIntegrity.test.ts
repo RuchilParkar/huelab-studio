@@ -11,7 +11,7 @@ describe('Store Integrity & Persistence Safeguards', () => {
     const backupStr = store.exportBackup();
     const parsed = JSON.parse(backupStr);
 
-    expect(parsed.app).toBe('HueLab');
+    expect(parsed.app).toBe('huelabstudio');
     expect(parsed.version).toBe('1.0.0');
     expect(Array.isArray(parsed.favorites)).toBe(true);
     expect(Array.isArray(parsed.history)).toBe(true);
@@ -32,7 +32,7 @@ describe('Store Integrity & Persistence Safeguards', () => {
   it('imports valid backup and updates state and localStorage safely', () => {
     const store = useHueStore.getState();
     const mockBackup = {
-      app: 'HueLab',
+      app: 'huelabstudio',
       version: '1.0.0',
       favorites: [
         {

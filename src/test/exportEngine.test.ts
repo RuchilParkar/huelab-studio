@@ -24,7 +24,7 @@ describe('Export Center Engine', () => {
   it('exports structured JSON', () => {
     const jsonStr = exportToJson(palette);
     const parsed = JSON.parse(jsonStr);
-    expect(parsed.app).toBe('HueLab');
+    expect(parsed.app).toBe('huelabstudio');
     expect(parsed.palette.name).toBe(palette.name);
     expect(parsed.palette.colors).toHaveLength(3);
   });
@@ -33,7 +33,7 @@ describe('Export Center Engine', () => {
     const tailwind = exportToTailwindConfig(palette);
     expect(tailwind).toContain('module.exports');
     expect(tailwind).toContain('colors');
-    expect(tailwind).toContain('huelab');
+    expect(tailwind).toContain('huelabstudio');
   });
 
   it('exports SCSS variables format', () => {

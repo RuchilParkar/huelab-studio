@@ -35,8 +35,8 @@ export const SettingsPage: React.FC = () => {
 
   const handleExportBackup = () => {
     const json = exportBackup();
-    downloadFile(json, `huelab-backup-${Date.now()}.json`, 'application/json');
-    addToast('Downloaded complete HueLab backup JSON', 'success');
+    downloadFile(json, `huelabstudio-backup-${Date.now()}.json`, 'application/json');
+    addToast('Downloaded complete huelabstudio backup JSON', 'success');
   };
 
   const handleImportFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -134,7 +134,7 @@ export const SettingsPage: React.FC = () => {
           <span>Local workspace data</span>
         </h3>
         <p className="text-xs text-[#8E95A5] leading-relaxed">
-          HueLab records your palettes, bookmarks, and parameters deterministically in browser LocalStorage. You can export complete snapshot archives or restore backups.
+          huelabstudio records your palettes, bookmarks, and parameters deterministically in browser LocalStorage. You can export complete snapshot archives or restore backups.
         </p>
 
         <div className="flex flex-wrap items-center gap-2 pt-1">

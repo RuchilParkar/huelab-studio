@@ -58,7 +58,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose }) => 
       try {
         setIsExportingPng(true);
         const dataUrl = await exportPaletteCardPng(currentPalette);
-        downloadDataUrl(dataUrl, `${filenameBase}-huelab.png`);
+        downloadDataUrl(dataUrl, `${filenameBase}-huelabstudio.png`);
         addToast('Downloaded palette card PNG', 'success');
       } catch (err) {
         addToast('Failed to export PNG', 'error');

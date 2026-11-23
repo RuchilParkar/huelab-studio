@@ -5,7 +5,7 @@ import { Palette } from '../types';
  */
 export function exportToCssVariables(palette: Palette): string {
   const lines = [
-    `/* HueLab Generated Palette: ${palette.name} */`,
+    `/* huelabstudio Generated Palette: ${palette.name} */`,
     `:root {`,
   ];
 
@@ -23,7 +23,7 @@ export function exportToCssVariables(palette: Palette): string {
  */
 export function exportToScssVariables(palette: Palette): string {
   const lines = [
-    `// HueLab Generated Palette: ${palette.name}`,
+    `// huelabstudio Generated Palette: ${palette.name}`,
   ];
 
   palette.colors.forEach((color, idx) => {
@@ -44,7 +44,7 @@ export function exportToTailwindConfig(palette: Palette): string {
     colorObj[key] = color.hex;
   });
 
-  return `// Tailwind CSS Color Extension for ${palette.name}\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        huelab: ${JSON.stringify(colorObj, null, 10).replace(/\}$/, '      }')}\n      }\n    }\n  }\n};`;
+  return `// Tailwind CSS Color Extension for ${palette.name}\nmodule.exports = {\n  theme: {\n    extend: {\n      colors: {\n        huelabstudio: ${JSON.stringify(colorObj, null, 10).replace(/\}$/, '      }')}\n      }\n    }\n  }\n};`;
 }
 
 /**
@@ -53,7 +53,7 @@ export function exportToTailwindConfig(palette: Palette): string {
 export function exportToJson(palette: Palette): string {
   return JSON.stringify(
     {
-      app: 'HueLab',
+      app: 'huelabstudio',
       version: '1.0.0',
       palette: {
         id: palette.id,
@@ -104,11 +104,11 @@ export function exportPaletteCardPng(palette: Palette): Promise<string> {
       // 3. Header branding
       ctx.fillStyle = '#A78BFA';
       ctx.font = '600 24px Inter, sans-serif';
-      ctx.fillText('HUELAB', 80, 95);
+      ctx.fillText('HUELABSTUDIO', 80, 95);
 
       ctx.fillStyle = '#626A78';
       ctx.font = '400 16px Inter, sans-serif';
-      ctx.fillText('Color Intelligence & Palette Studio', 185, 95);
+      ctx.fillText('Color Intelligence & Palette Studio', 245, 95);
 
       // Palette Name & Harmony Tag
       ctx.fillStyle = '#F4F5F7';
@@ -155,7 +155,7 @@ export function exportPaletteCardPng(palette: Palette): Promise<string> {
       // 5. Footer info
       ctx.fillStyle = '#626A78';
       ctx.font = '400 14px Inter, sans-serif';
-      ctx.fillText('Crafted with HueLab • huelab.studio', 80, height - 60);
+      ctx.fillText('Crafted with huelabstudio • huelab.studio', 80, height - 60);
 
       resolve(canvas.toDataURL('image/png'));
     } catch (err) {

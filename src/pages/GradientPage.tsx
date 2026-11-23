@@ -47,7 +47,7 @@ export const GradientPage: React.FC = () => {
       const dataUrl = await exportGradientToPng(gradientConfig, 1920, 1080);
       const a = document.createElement('a');
       a.href = dataUrl;
-      a.download = `huelab-gradient-${Date.now()}.png`;
+      a.download = `huelabstudio-gradient-${Date.now()}.png`;
       a.click();
       addToast('Downloaded high-resolution gradient PNG (1920x1080)', 'success');
     } catch {

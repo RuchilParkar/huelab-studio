@@ -48,7 +48,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenShortcuts, onOpenAbout }
         <div className="min-w-0">
           <div className="flex items-center gap-2">
             <h1 className="text-sm font-semibold tracking-tight text-[#F1F3F7] leading-none">
-              HueLab
+              huelabstudio
             </h1>
             <span className="text-[10px] font-mono text-[#64748B] border border-[#232733] px-1 py-0.2 rounded">
               v1.0
@@ -116,7 +116,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ onOpenShortcuts, onOpenAbout }
           className="w-full flex items-center gap-2 h-8 px-2.5 rounded-md text-xs text-[#9CA3AF] hover:text-[#F1F3F7] hover:bg-[#141720] transition-colors"
         >
           <Info className="w-3.5 h-3.5 text-[#64748B]" />
-          <span>About HueLab</span>
+          <span>About huelabstudio</span>
         </button>
 
         <div className="pt-2 px-2.5 flex items-center justify-between text-[11px] text-[#64748B]">

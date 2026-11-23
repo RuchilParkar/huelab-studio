@@ -470,7 +470,7 @@ export const useHueStore = create<HueStore>((set, get) => ({
     return JSON.stringify(
       {
         version: '1.0.0',
-        app: 'HueLab',
+        app: 'huelabstudio',
         exportedAt: new Date().toISOString(),
         currentPalette,
         favorites,

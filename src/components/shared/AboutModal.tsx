@@ -12,7 +12,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="About HueLab"
+      title="About huelabstudio"
       description="Calibrated color studio and design-token workbench"
       maxWidth="max-w-md"
     >
@@ -27,13 +27,13 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
           <div>
-            <h4 className="text-xs font-semibold text-[#F1F3F7]">HueLab Studio v1.0.0</h4>
+            <h4 className="text-xs font-semibold text-[#F1F3F7]">huelabstudio v1.0.0</h4>
             <p className="text-[#64748B]">Optical color intelligence instrument</p>
           </div>
         </div>
 
         <p>
-          HueLab is engineered for UI/UX designers, creative developers, and frontend architects who require deterministic color harmonies, perceptual lightness calibration, and exportable design tokens.
+          huelabstudio is engineered for UI/UX designers, creative developers, and frontend architects who require deterministic color harmonies, perceptual lightness calibration, and exportable design tokens.
         </p>
 
         <div className="grid grid-cols-2 gap-2 pt-1">

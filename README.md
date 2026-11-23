@@ -1,61 +1,84 @@
-# HueLab — Advanced Color Intelligence & Palette Studio
+# huelabstudio — Advanced Color Intelligence & Palette Studio
 
-> **Explore Color. Build Harmony.**
+<div align="center">
 
-HueLab is an advanced, production-grade color intelligence workspace designed for UI/UX designers, frontend architects, graphic designers, and creative technologists. It combines color science with a dark, refined developer-first interface to generate harmonic color systems, evaluate accessibility, extract colors from images, edit gradients, and export production design tokens.
+[![Repository](https://img.shields.io/badge/GitHub-RuchilParkar%2Fhuelab--studio-18181B?style=flat&logo=github&logoColor=white)](https://github.com/RuchilParkar/huelab-studio)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/RuchilParkar/huelab-studio/blob/main/LICENSE)
+[![React 19](https://img.shields.io/badge/React-19-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Tests](https://img.shields.io/badge/Vitest-37%20Passed-green?style=flat&logo=vitest&logoColor=white)](https://github.com/RuchilParkar/huelab-studio)
+
+**Explore Color. Build Harmony.**
+
+*A precision optical color instrument and design-token workbench for UI/UX designers, frontend engineers, and creative technologists.*
+
+</div>
+
+---
+
+## 🔬 Design Philosophy: "Quiet Chrome, Vivid Pigment"
+
+huelabstudio is engineered as a professional design instrument rather than a generic SaaS dashboard. Built according to strict art-directed design principles:
+
+- **Quiet Chrome, Vivid Pigment**: The surrounding interface recedes into dark graphite surfaces (`#0B0C10`, `#0E1015`, `#141720`) with razor `#222632` hairlines, ensuring that generated swatches are the sole vivid elements on screen.
+- **Disciplined Geometry**: Strict proportional radius mathematics ($R_{\text{inner}} = R_{\text{outer}} - \text{padding}$) across modal shells (14px), control inputs (8px), and micro-badges (6px).
+- **Tabular Precision**: Monospaced tabular numerals (`font-mono tabular-nums`) across all hexadecimal, sRGB, OKLCH, and contrast ratios eliminate layout shifting during slider scrubbing.
+- **Instrument-Grade Physics**: Zero bouncy spring physics (`scale-105` / `scale-95` removed) in favor of instantaneous, crisp 150ms ease-out transitions (`transition-colors duration-150`).
+- **Distributed Telemetry Inspector**: Live preview uses realistic engineering telemetry components instead of generic marketing copy to validate token performance under real UI conditions.
 
 ---
 
 ## 🎨 Key Features
 
 ### 1. Color Palette Studio
-- **Dynamic Swatch Canvas**: 2 to 10 color vertical swatches with responsive desktop and mobile stacking.
-- **Lock & Unlock Colors**: Lock individual colors while regenerating the unlocked tones around them.
-- **Role Assignment**: Automatically assigns design system roles (`primary`, `secondary`, `accent`, `surface`, `background`, `text`, `muted`).
-- **Harmonic Algorithms**:
-  - Monochromatic (varying lightness/saturation at fixed perceptual hue)
-  - Analogous (neighbors on the color wheel: $\pm 30^\circ$, $\pm 60^\circ$)
-  - Complementary ($180^\circ$ opposing pairs with harmonic tints)
-  - Split Complementary ($150^\circ$ and $210^\circ$)
-  - Triadic (three equidistant $120^\circ$ hues)
-  - Tetradic (rectangular double-complementary)
-  - Square ($90^\circ$ equidistant hues)
-  - Custom (golden ratio organic distribution)
-- **Keyboard Shortcuts**:
-  - `Space`: Regenerate palette
-  - `L`: Lock/unlock focused color
-  - `C`: Copy HEX code of focused color
-  - `1–9`: Focus swatch by index
-  - `E`: Open Export modal
-  - `?`: View all keyboard shortcuts
+- **Dynamic Swatch Canvas**: 2 to 10 vertical color swatches with responsive desktop columns and mobile cards.
+- **Lock & Unlock Colors**: Lock individual hues while regenerating surrounding tones with harmonic cohesion.
+- **Semantic Role Assignment**: Automatic classification of design system roles (`primary`, `secondary`, `accent`, `surface`, `background`, `text`, `muted`).
+- **Harmonic Engines**:
+  - **Monochromatic**: Perceptual lightness and chroma shifts at constant dominant hue.
+  - **Analogous**: Adjacent color wheel positions ($\pm 30^\circ, \pm 60^\circ$).
+  - **Complementary**: High-contrast $180^\circ$ opposing pairs with harmonic supporting tints.
+  - **Split Complementary**: Dynamic tri-point harmony ($150^\circ$ and $210^\circ$).
+  - **Triadic**: Equidistant $120^\circ$ color triads.
+  - **Tetradic**: Dual-complementary rectangular coordinates.
+  - **Square**: Perceptually balanced $90^\circ$ equidistant distribution.
+  - **Custom**: Golden ratio ($\phi$) organic color dispersion.
+- **Keyboard Controls**:
+  - <kbd>Space</kbd> : Regenerate unlocked swatches
+  - <kbd>L</kbd> : Toggle lock on focused swatch
+  - <kbd>C</kbd> : Copy HEX code of focused swatch
+  - <kbd>1</kbd>–<kbd>9</kbd> : Focus swatch by index
+  - <kbd>E</kbd> : Open Export modal
+  - <kbd>?</kbd> : View all keyboard shortcuts
 
 ### 2. Advanced Color Editor
-- Real-time synchronized conversion between **HEX, RGB, RGBA, HSL, HSLA, HSV, and OKLCH**.
-- Fine-grained perceptual sliders for Hue ($0^\circ - 360^\circ$), Saturation ($0\% - 100\%$), and Lightness ($0\% - 100\%$).
-- Live WCAG contrast rating of the color against dark (`#0B0C10`) and light (`#FFFFFF`) surfaces.
-- One-click copy buttons for every format.
+- Bi-directional synchronized conversion across **HEX, RGB, RGBA, HSL, HSLA, HSV, and OKLCH**.
+- Fine-grained channel controls for Hue ($0^\circ - 360^\circ$), Saturation ($0\% - 100\%$), and Lightness ($0\% - 100\%$).
+- Live WCAG contrast rating against dark (`#0B0C10`) and light (`#FFFFFF`) surfaces.
+- One-click copy buttons with formatted channel strings.
 
-### 3. Live Website UI Simulation
+### 3. Distributed Telemetry UI Simulation
 - Instant preview of active palette in 4 realistic responsive interface modes:
+  - **Telemetry Dashboard**: KPI metrics, node status badges, cluster utilization bars, and data tables.
   - **SaaS Platform**: Navbar, hero badge, headline, CTA buttons, feature cards.
-  - **Analytics Dashboard**: KPI cards, trend percentages, cluster utilization bars.
-  - **Storefront (E-Commerce)**: Hero product banner, product cards, price tags, ratings.
-  - **Mobile Application**: Mobile bezel, balance card, quick actions, tab bar.
-- Dynamically binds tokens to background, text, primary, secondary, and accent surfaces.
+  - **Storefront (E-Commerce)**: Product cards, pricing tags, inventory badges, and checkout buttons.
+  - **Mobile Application**: Mobile bezel, balance card, quick actions, and tab bar.
+- Dynamically maps generated tokens to backgrounds, borders, typography, and interactive states.
 
-### 4. Image Color Extractor
+### 4. Computer Vision Image Color Extractor
 - Client-side drag-and-drop image processing (PNG, JPG, WebP up to 15MB).
-- K-Means centroid clustering in RGB/Lab space to extract 2 to 10 dominant colors.
-- Suppression of near-duplicate pixels and calculation of pixel coverage percentage.
+- K-Means centroid clustering in RGB/Lab space extracting 2 to 10 dominant colors.
+- Suppression of near-duplicate pixels and calculation of coverage percentage.
 - One-click "Apply to Studio Palette" transfers extracted colors directly into the generator.
-- 100% private: images are processed in-browser on HTML5 canvas and never sent to any server.
+- 100% private: images are processed entirely in-browser on HTML5 canvas with zero server transmission.
 
 ### 5. Gradient Studio
-- Linear and radial gradient generator.
-- Interactive angle rotation slider ($0^\circ - 360^\circ$).
+- Linear and radial gradient builder.
+- Interactive angle rotation dial ($0^\circ - 360^\circ$).
 - Multi-stop manager: add, delete, and adjust color stops with percentage sliders.
-- Instant CSS export (`background: linear-gradient(...)`).
-- High-resolution (1920x1080) PNG gradient download via offscreen Canvas rendering.
+- Production CSS code generation (`background: linear-gradient(...)`).
+- High-resolution (1920x1080) PNG gradient export via offscreen Canvas rendering.
 
 ### 6. Accessibility & WCAG 2.2 Contrast Checker
 - Mathematical evaluation using WCAG relative luminance formula:
@@ -69,18 +92,18 @@ HueLab is an advanced, production-grade color intelligence workspace designed fo
 - One-click foreground/background swap.
 
 ### 7. Color Converter
-- Live bi-directional multi-format converter for HEX, RGB, RGBA, HSL, HSLA, HSV, and OKLCH.
+- Live multi-format converter for HEX, RGB, RGBA, HSL, HSLA, HSV, and OKLCH.
 - Quick preset examples (Royal Amethyst, Cyber Cyan, Neon Fuchsia, Emerald Glade, Champagne Gold, Obsidian Black).
 
 ### 8. Curated Explore Library
 - Hand-crafted palettes organized across 11 visual categories:
   - Minimal, Nature, Cyberpunk, Pastel, Luxury, Vintage, Modern, Monochrome, Dark UI, Warm, Cool.
-  - Instant tag search, color code copying, and studio loading.
+- Instant tag search, color code copying, and direct studio loading.
 
 ### 9. Favorites, History & Full Backup
 - LocalStorage persistence for recent generation history and favorited palettes.
 - Inline palette renaming.
-- Complete HueLab Backup Export and Import (JSON) with structure validation.
+- Complete huelabstudio Backup Export and Import (JSON) with structure validation.
 
 ### 10. AI Color Intelligence (with Local Semantic Fallback)
 - Natural language concept parsing (e.g. "A luxury black and gold brand", "A futuristic cyberpunk interface").
@@ -118,8 +141,8 @@ HueLab is an advanced, production-grade color intelligence workspace designed fo
 ### Installation
 ```bash
 # Clone the repository
-git clone <repo-url>
-cd HeuLab
+git clone https://github.com/RuchilParkar/huelab-studio.git
+cd huelab-studio
 
 # Install dependencies
 npm install
@@ -143,6 +166,7 @@ Runs the full Vitest suite covering:
 - Color naming nearest-match accuracy
 - Gradient CSS generation
 - Multi-format token exports
+- Store integrity and backup verification
 
 ### Production Build
 ```bash
@@ -211,7 +235,9 @@ src/
     ├── paletteGenerator.test.ts
     ├── colorNaming.test.ts
     ├── gradientEngine.test.ts
-    └── exportEngine.test.ts
+    ├── exportEngine.test.ts
+    ├── clipboard.test.ts
+    └── storeIntegrity.test.ts
 ```
 
 ---
@@ -219,8 +245,8 @@ src/
 ## 🌐 Deployment
 
 ### Vercel Deployment
-HueLab is pre-configured for one-click deployment on Vercel:
-1. Push your repository to GitHub or GitLab.
+huelabstudio is pre-configured for one-click deployment on Vercel:
+1. Push your repository to GitHub: [https://github.com/RuchilParkar/huelab-studio](https://github.com/RuchilParkar/huelab-studio)
 2. Import the project into Vercel.
 3. Framework Preset: **Vite**
 4. Root Directory: `./`
@@ -232,4 +258,5 @@ HueLab is pre-configured for one-click deployment on Vercel:
 
 ## 🛡️ License
 
-MIT License. Designed with intentional craft and restraint.
+MIT License. Designed with architectural restraint and functional clarity.
+Repository: [https://github.com/RuchilParkar/huelab-studio](https://github.com/RuchilParkar/huelab-studio)

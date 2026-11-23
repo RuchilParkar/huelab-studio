@@ -207,7 +207,7 @@ export const AiPaletteModal: React.FC<AiPaletteModalProps> = ({ isOpen, onClose 
               <span>Client-side storage only</span>
             </div>
             <p className="text-[11px] text-[#64748B] leading-relaxed">
-              HueLab never exposes secrets or proxies requests through remote servers.
+              huelabstudio never exposes secrets or proxies requests through remote servers.
             </p>
             <input
               type="password"

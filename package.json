@@ -1,8 +1,16 @@
 {
-  "name": "huelab",
+  "name": "huelab-studio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RuchilParkar/huelab-studio.git"
+  },
+  "homepage": "https://github.com/RuchilParkar/huelab-studio#readme",
+  "bugs": {
+    "url": "https://github.com/RuchilParkar/huelab-studio/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
