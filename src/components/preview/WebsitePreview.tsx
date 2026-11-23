@@ -479,7 +479,7 @@ export const WebsitePreview: React.FC = () => {
                 <div className="relative">
                   <input
                     type="text"
-                    defaultValue="tokens@huelab.studio"
+                    defaultValue="tokens@huelabstudio.com"
                     style={{
                       backgroundColor: bg,
                       color: textPrimary,

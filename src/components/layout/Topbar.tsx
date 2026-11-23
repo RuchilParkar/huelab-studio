@@ -52,32 +52,32 @@ export const Topbar: React.FC<TopbarProps> = ({ onOpenExport, onOpenAi }) => {
   const pageMeta = PAGE_METADATA[activePage];
 
   return (
-    <header className="h-14 px-6 bg-[#0E1015]/90 backdrop-blur-md border-b border-[#222632] flex items-center justify-between sticky top-0 z-30">
+    <header className="h-14 px-3 sm:px-6 bg-[#0E1015]/90 backdrop-blur-md border-b border-[#222632] flex items-center justify-between sticky top-0 z-30">
       {/* Title & Metadata */}
-      <div className="flex items-center gap-3">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <h2 className="text-sm font-semibold text-[#F1F3F7] tracking-tight">
+      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <h2 className="text-sm font-semibold text-[#F1F3F7] tracking-tight truncate">
               {pageMeta.title}
             </h2>
             {activePage === 'generator' && (
-              <span className="text-[11px] font-mono text-[#8E95A5] px-1.5 py-0.5 rounded bg-[#181B24] border border-[#262B38]">
+              <span className="text-[10px] sm:text-[11px] font-mono text-[#8E95A5] px-1.5 py-0.5 rounded bg-[#181B24] border border-[#262B38] whitespace-nowrap hidden xs:inline">
                 {currentPalette.colors.length} hues • {currentPalette.harmony}
               </span>
             )}
           </div>
-          <p className="text-[11px] text-[#64748B] hidden sm:block">
+          <p className="text-[11px] text-[#64748B] hidden sm:block truncate">
             {pageMeta.subtitle}
           </p>
         </div>
       </div>
 
       {/* Action Controls */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
         {activePage === 'generator' && (
           <button
             onClick={() => generateNewPalette()}
-            className="flex items-center gap-1.5 h-8 px-2.5 bg-[#171A23] hover:bg-[#202532] border border-[#282D3B] text-[#F1F3F7] text-xs font-medium rounded-lg transition-colors shadow-sm"
+            className="flex items-center gap-1.5 h-8 px-2 sm:px-2.5 bg-[#171A23] hover:bg-[#202532] border border-[#282D3B] text-[#F1F3F7] text-xs font-medium rounded-lg transition-colors shadow-sm"
           >
             <Shuffle className="w-3.5 h-3.5 text-[#9CA3AF]" />
             <span className="hidden sm:inline">Regenerate</span>
@@ -87,7 +87,7 @@ export const Topbar: React.FC<TopbarProps> = ({ onOpenExport, onOpenAi }) => {
 
         <button
           onClick={onOpenAi}
-          className="flex items-center gap-1.5 h-8 px-2.5 bg-[#171A23] hover:bg-[#202532] border border-[#282D3B] text-[#9CA3AF] hover:text-[#F1F3F7] text-xs font-medium rounded-lg transition-colors"
+          className="flex items-center gap-1.5 h-8 px-2 sm:px-2.5 bg-[#171A23] hover:bg-[#202532] border border-[#282D3B] text-[#9CA3AF] hover:text-[#F1F3F7] text-xs font-medium rounded-lg transition-colors"
           title="AI Palette Generator"
         >
           <Wand2 className="w-3.5 h-3.5 text-[#8E95A5]" />
@@ -96,11 +96,11 @@ export const Topbar: React.FC<TopbarProps> = ({ onOpenExport, onOpenAi }) => {
 
         <button
           onClick={onOpenExport}
-          className="flex items-center gap-1.5 h-8 px-3 bg-[#F1F3F7] hover:bg-white text-[#0B0C10] text-xs font-medium rounded-lg transition-colors btn-highlight shadow-sm"
+          className="flex items-center gap-1.5 h-8 px-2.5 sm:px-3 bg-[#F1F3F7] hover:bg-white text-[#0B0C10] text-xs font-medium rounded-lg transition-colors btn-highlight shadow-sm"
         >
           <Download className="w-3.5 h-3.5" />
           <span>Export</span>
-          <span className="kbd-badge bg-[#E1E4EB] border-transparent text-[#0B0C10] ml-1">E</span>
+          <span className="kbd-badge bg-[#E1E4EB] border-transparent text-[#0B0C10] ml-1 hidden sm:inline">E</span>
         </button>
       </div>
     </header>

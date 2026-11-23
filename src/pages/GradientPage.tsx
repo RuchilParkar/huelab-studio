@@ -62,9 +62,9 @@ export const GradientPage: React.FC = () => {
       {/* Live Gradient Preview Display */}
       <div
         style={{ background: cssString }}
-        className="w-full h-64 sm:h-80 rounded-xl border border-[#222632] shadow-sm transition-colors duration-200 relative flex items-end p-5 overflow-hidden"
+        className="w-full h-64 sm:h-80 rounded-xl border border-[#222632] shadow-sm transition-colors duration-200 relative flex flex-col justify-between p-3.5 sm:p-5 overflow-hidden"
       >
-        <div className="absolute top-3.5 right-3.5 flex items-center gap-2">
+        <div className="self-end flex items-center gap-2">
           <button
             onClick={handleCopyCss}
             className="flex items-center gap-1.5 h-8 px-2.5 bg-[#0B0C10]/80 hover:bg-[#0B0C10] backdrop-blur-md border border-white/20 text-white text-xs font-medium rounded-lg transition-colors"
@@ -82,7 +82,7 @@ export const GradientPage: React.FC = () => {
           </button>
         </div>
 
-        <div className="bg-[#0B0C10]/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg text-xs font-mono text-white/90 tabular-nums">
+        <div className="bg-[#0B0C10]/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg text-xs font-mono text-white/90 tabular-nums break-all max-w-full">
           {cssString}
         </div>
       </div>

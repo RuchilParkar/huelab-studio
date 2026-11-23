@@ -79,14 +79,14 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
       role="region"
       aria-label={`Color swatch for ${color.name}, ${color.hex}, role ${color.role || 'unassigned'}`}
       style={{ backgroundColor: color.hex }}
-      className={`relative flex-1 min-h-[340px] sm:min-h-[400px] md:min-h-[440px] lg:min-h-[460px] rounded-xl flex flex-col justify-between p-4 sm:p-5 transition-colors duration-150 group cursor-pointer select-none border focus:outline-none focus-visible:ring-1 focus-visible:ring-white ${
+      className={`relative flex-1 min-h-[82px] sm:min-h-[96px] md:min-h-[440px] lg:min-h-[460px] rounded-xl flex md:flex-col flex-row items-center md:items-stretch justify-between p-3 sm:p-4 md:p-5 transition-colors duration-150 group cursor-pointer select-none border focus:outline-none focus-visible:ring-1 focus-visible:ring-white gap-2 md:gap-0 ${
         isFocused
           ? 'border-white/70 ring-1 ring-white/50 ring-offset-2 ring-offset-[#0B0C10] shadow-xl'
           : 'border-black/10 hover:border-black/20'
       }`}
     >
-      {/* Top Controls: Semantic Role Pill & Lock Button */}
-      <div className="flex items-center justify-between w-full relative z-20">
+      {/* Role Pill & Desktop Lock */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between w-auto md:w-full relative z-20 shrink-0">
         {/* Role badge with dropdown menu */}
         <div className="relative">
           <button
@@ -94,7 +94,7 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
               e.stopPropagation();
               setShowRoleMenu(!showRoleMenu);
             }}
-            className={`flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md backdrop-blur-md transition-colors ${
+            className={`flex items-center gap-1 text-[10px] sm:text-[11px] font-mono px-2 py-0.5 rounded-md backdrop-blur-md transition-colors ${
               isDarkText
                 ? 'bg-black/10 text-black hover:bg-black/20 border border-black/10'
                 : 'bg-white/10 text-white hover:bg-white/20 border border-white/15'
@@ -128,41 +128,91 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
           )}
         </div>
 
-        {/* Lock toggle button */}
-        <Tooltip content={color.locked ? 'Unlock Color' : 'Lock Color'} shortcut="L">
-          <button
-            onClick={handleToggleLock}
-            className={`w-7 h-7 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
-              color.locked
-                ? isDarkText
-                  ? 'bg-black text-white shadow-sm'
-                  : 'bg-white text-black shadow-sm'
-                : isDarkText
-                ? 'bg-black/10 hover:bg-black/20 text-black/80'
-                : 'bg-white/10 hover:bg-white/20 text-white/80'
-            }`}
-            aria-label={color.locked ? 'Unlock color' : 'Lock color'}
-          >
-            {color.locked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />}
-          </button>
-        </Tooltip>
+        {/* Lock toggle button on desktop */}
+        <div className="hidden md:block">
+          <Tooltip content={color.locked ? 'Unlock Color' : 'Lock Color'} shortcut="L">
+            <button
+              onClick={handleToggleLock}
+              className={`w-7 h-7 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
+                color.locked
+                  ? isDarkText
+                    ? 'bg-black text-white shadow-sm'
+                    : 'bg-white text-black shadow-sm'
+                  : isDarkText
+                  ? 'bg-black/10 hover:bg-black/20 text-black/80'
+                  : 'bg-white/10 hover:bg-white/20 text-white/80'
+              }`}
+              aria-label={color.locked ? 'Unlock color' : 'Lock color'}
+            >
+              {color.locked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />}
+            </button>
+          </Tooltip>
+        </div>
       </div>
 
-      {/* Middle Center: Action Toolbar */}
+      {/* Hex & Name Information */}
+      <div className="flex-1 min-w-0 px-2 md:px-0 md:w-full md:order-last">
+        <div
+          onClick={handleCopy}
+          className="flex items-baseline md:justify-between group/hex cursor-pointer gap-2"
+        >
+          <span
+            className={`font-mono text-base sm:text-lg md:text-2xl font-bold tracking-tight tabular-nums transition-opacity ${
+              isDarkText ? 'text-black' : 'text-white'
+            }`}
+          >
+            {color.hex}
+          </span>
+          <span
+            className={`text-xs opacity-0 group-hover/hex:opacity-80 transition-opacity font-mono hidden md:inline ${
+              isDarkText ? 'text-black' : 'text-white'
+            }`}
+          >
+            {copied ? 'Copied' : 'Copy'}
+          </span>
+        </div>
+
+        <p
+          className={`text-[11px] sm:text-xs font-normal truncate mt-0.5 tracking-normal ${
+            isDarkText ? 'text-black/80' : 'text-white/80'
+          }`}
+        >
+          {color.name}
+        </p>
+      </div>
+
+      {/* Action Toolbar */}
       <div
-        className={`flex items-center justify-center gap-1.5 py-4 transition-opacity duration-150 ${
+        className={`flex items-center gap-1 sm:gap-1.5 md:py-4 transition-opacity duration-150 shrink-0 ${
           isFocused
             ? 'opacity-100'
-            : 'opacity-85 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100'
+            : 'opacity-90 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100'
         }`}
       >
+        {/* Mobile Lock button */}
+        <button
+          onClick={handleToggleLock}
+          className={`md:hidden w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
+            color.locked
+              ? isDarkText
+                ? 'bg-black text-white shadow-sm'
+                : 'bg-white text-black shadow-sm'
+              : isDarkText
+              ? 'bg-black/15 hover:bg-black/25 text-black'
+              : 'bg-white/15 hover:bg-white/25 text-white'
+          }`}
+          aria-label={color.locked ? 'Unlock color' : 'Lock color'}
+        >
+          {color.locked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5 opacity-70" />}
+        </button>
+
         <Tooltip content="Edit Channels">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onOpenEditor();
             }}
-            className={`w-8 h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
+            className={`w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
               isDarkText
                 ? 'bg-black/15 hover:bg-black/25 text-black'
                 : 'bg-white/15 hover:bg-white/25 text-white'
@@ -176,7 +226,7 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
         <Tooltip content="Copy HEX" shortcut="C">
           <button
             onClick={handleCopy}
-            className={`w-8 h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
+            className={`w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
               isDarkText
                 ? 'bg-black/15 hover:bg-black/25 text-black'
                 : 'bg-white/15 hover:bg-white/25 text-white'
@@ -191,10 +241,10 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
           <Tooltip content="Remove Swatch">
             <button
               onClick={handleRemove}
-              className={`w-8 h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
+              className={`w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-lg backdrop-blur-md transition-colors ${
                 isDarkText
                   ? 'bg-black/15 hover:bg-black/25 text-rose-800'
-                : 'bg-white/15 hover:bg-white/25 text-rose-300'
+                  : 'bg-white/15 hover:bg-white/25 text-rose-300'
               }`}
               aria-label="Delete color swatch"
             >
@@ -202,37 +252,6 @@ export const ColorSwatch: React.FC<ColorSwatchProps> = ({
             </button>
           </Tooltip>
         )}
-      </div>
-
-      {/* Bottom Information: HEX Code & Technical Title */}
-      <div className="w-full">
-        <div
-          onClick={handleCopy}
-          className="flex items-baseline justify-between group/hex cursor-pointer"
-        >
-          <span
-            className={`font-mono text-xl md:text-2xl font-bold tracking-tight tabular-nums transition-opacity ${
-              isDarkText ? 'text-black' : 'text-white'
-            }`}
-          >
-            {color.hex}
-          </span>
-          <span
-            className={`text-xs opacity-0 group-hover/hex:opacity-80 transition-opacity font-mono ${
-              isDarkText ? 'text-black' : 'text-white'
-            }`}
-          >
-            {copied ? 'Copied' : 'Copy'}
-          </span>
-        </div>
-
-        <p
-          className={`text-xs font-normal truncate mt-0.5 tracking-normal ${
-            isDarkText ? 'text-black/80' : 'text-white/80'
-          }`}
-        >
-          {color.name}
-        </p>
       </div>
     </div>
   );

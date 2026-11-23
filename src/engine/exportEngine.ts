@@ -155,7 +155,7 @@ export function exportPaletteCardPng(palette: Palette): Promise<string> {
       // 5. Footer info
       ctx.fillStyle = '#626A78';
       ctx.font = '400 14px Inter, sans-serif';
-      ctx.fillText('Crafted with huelabstudio • huelab.studio', 80, height - 60);
+      ctx.fillText('Crafted with huelabstudio • huelabstudio.com', 80, height - 60);
 
       resolve(canvas.toDataURL('image/png'));
     } catch (err) {

@@ -89,17 +89,21 @@ interface HueStore {
 }
 
 const STORAGE_KEYS = {
-  PREFERENCES: 'huelab_preferences_v1',
-  FAVORITES: 'huelab_favorites_v1',
-  HISTORY: 'huelab_history_v1',
-  CURRENT: 'huelab_current_v1',
-  GEN_MODE: 'huelab_gen_mode_v1',
+  PREFERENCES: 'huelabstudio_preferences_v1',
+  FAVORITES: 'huelabstudio_favorites_v1',
+  HISTORY: 'huelabstudio_history_v1',
+  CURRENT: 'huelabstudio_current_v1',
+  GEN_MODE: 'huelabstudio_gen_mode_v1',
 };
 
-// Safe LocalStorage helpers
+// Safe LocalStorage helpers with backward-compatible legacy fallback
 function loadFromStorage<T>(key: string, fallback: T): T {
   try {
-    const raw = localStorage.getItem(key);
+    let raw = localStorage.getItem(key);
+    if (!raw && key.startsWith('huelabstudio_')) {
+      const legacyKey = key.replace('huelabstudio_', 'huelab_');
+      raw = localStorage.getItem(legacyKey);
+    }
     return raw ? JSON.parse(raw) : fallback;
   } catch {
     return fallback;
